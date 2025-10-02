@@ -4,12 +4,6 @@
 ## Structure
 ```python
 Django_Pfadi/ 
-│── pfadfinder/
-│ ├── settings.py 
-│ ├── urls.py 
-│ ├── wsgi.py 
-│ └── asgi.py 
-│ 
 │── accounts/ 
 │ ├── models.py 
 │ ├── views.py  
@@ -20,9 +14,6 @@ Django_Pfadi/
 │     ├── register.html 
 │     └── approval_list.html 
 │ 
-│── templates/
-│   └──base.html
-│ 
 │── lager/ 
 │ ├── models.py 
 │ ├── views.py 
@@ -30,6 +21,15 @@ Django_Pfadi/
 │ └── templates/lager/ 
 │     ├── lager_list.html 
 │     └── lager_edit.html 
+│
+│── pfadfinder/
+│ ├── settings.py 
+│ ├── urls.py 
+│ ├── wsgi.py 
+│ └── asgi.py 
+│ 
+│── templates/
+│   └──base.html
 │
 │── manage.py
 │── db.sqlite3
