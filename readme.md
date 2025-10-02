@@ -54,3 +54,8 @@ Open Terminal and type in:
 ```python
     python manage.py runserver
 ```
+
+## Database
+For you to see the Database open the Database icon on the right side of the Screen (PyCharm). Press on the top left the + and select Datasource. 
+Then search for SQLite, it opens a new Window where in the middle you can see File: press the 3 Dots on the right and open the db.sqlite3 from this 
+Project then you should be able to see it.
