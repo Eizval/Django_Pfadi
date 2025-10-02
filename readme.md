@@ -1,3 +1,5 @@
+from django.contrib.gis.geos.prototypes import cs_setx
+
 # Pfadfinder Project
 
 
@@ -28,6 +30,10 @@ Django_Pfadi/
 │ ├── wsgi.py 
 │ └── asgi.py 
 │ 
+│── static
+│   └──css 
+│      └──styles.css
+│
 │── templates/
 │   └──base.html
 │
