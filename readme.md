@@ -1,10 +1,6 @@
 # Pfadfinder Project
 
-## Start server
-Open Terminal and type in:
-```python
-    python manage.py runserver
-```
+
 ## Structure
 ```python
 Django_Pfadi/ 
@@ -15,7 +11,7 @@ Django_Pfadi/
 │ └── asgi.py 
 │ 
 │── accounts/ 
-│ ├── models.py # User (mit Rolle + Approval) 
+│ ├── models.py 
 │ ├── views.py  
 │ ├── forms.py
 │ ├── urls.py 
@@ -23,6 +19,9 @@ Django_Pfadi/
 │     ├── login.html 
 │     ├── register.html 
 │     └── approval_list.html 
+│ 
+│── templates/
+│   └──base.html
 │ 
 │── lager/ 
 │ ├── models.py 
@@ -34,4 +33,18 @@ Django_Pfadi/
 │
 │── manage.py
 │── db.sqlite3
+│── readme.md
+└── requirements.txt 
+```
+
+## Install all Packages
+Open Terminal and enter:
+```python
+    pip install -r requirements.txt
+```
+
+## Start server
+Open Terminal and type in:
+```python
+    python manage.py runserver
 ```
