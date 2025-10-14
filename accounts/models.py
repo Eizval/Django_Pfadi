@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class User(models.Model):
     is_approve = models.BooleanField(default=False)
-    role = models.ForeignKey('Role', on_delete=models.PROTECT)
+    role = models.ForeignKey('Role', on_delete=models.PROTECT, null=True, blank=True)
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     email = models.EmailField()
