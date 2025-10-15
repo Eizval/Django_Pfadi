@@ -47,14 +47,22 @@ Django_Pfadi/
 Open Terminal and enter:
 ```python
     pip install -r requirements.txt
+    
 ```
 
 ## Start server
 Open Terminal and type in:
 ```python
     python manage.py runserver
+    npm install
 ```
+Make sure you have installed node.js for npm to work
 
+## CSS
+To update css you need to type this in the Terminal:
+```python
+    npx sass static/scss/styles.scss static/css/styles.css
+```
 ## Database
 For you to see the Database open the Database icon on the right side of the Screen (PyCharm). Press on the top left the + and select Datasource. 
 Then search for SQLite, it opens a new Window where in the middle you can see File: press the 3 Dots on the right and open the db.sqlite3 from this 

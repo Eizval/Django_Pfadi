@@ -1,0 +1,92 @@
+// ---------- Variablen ----------
+$primary-color: #5cc184;
+$primary-hover: #4da773;
+$input-border: #d0d6db;
+$label-color: #333;
+$font-family: Arial, sans-serif;
+$background-gradient-start: #ffd817;
+$background-gradient-end: #968500;
+
+// ---------- Container & Layout ----------
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  background: linear-gradient(135deg, $background-gradient-start 0%, $background-gradient-end 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+
+  .submain {
+    width: 100%;
+
+    form {
+      display: block;
+
+      .mb-3 {
+        margin-bottom: 1rem;
+        text-align: left;
+
+        label {
+          display: block;
+          text-align: left;
+          font-weight: 600;
+          margin-bottom: 6px;
+          color: $label-color;
+        }
+      }
+
+      input.form-control,
+      select.form-control,
+      textarea.form-control {
+        width: 100%;
+        padding: 0.65rem 0.85rem;
+        border: 1px solid $input-border;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: border-color .15s, box-shadow .15s;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 6px rgba(92,193,132,0.22);
+        }
+      }
+
+      button.btn {
+        width: 100%;
+        padding: 0.7rem;
+        border-radius: 8px;
+        border: none;
+        background: $primary-color;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+          background: $primary-hover;
+        }
+      }
+    }
+  }
+}
+
+// ---------- Medienabfragen ----------
+@media (max-width: 420px) {
+  .main {
+    padding: 20px;
+    border-radius: 10px;
+  }
+}

@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from .models import User
 
 
 # ----------------------
@@ -25,17 +25,19 @@ class UserLoginForm(UserCreationForm):
 # ----------------------
 
 class UserRegistrationForm(UserCreationForm):
-    username = forms.CharField(
-        required=True,
-        max_length=100,
-        widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'})
-    )
-    email = forms.CharField(
-        required=True,
-        max_length=100,
-        widget=forms.TextInput(attrs={'placeholder': 'Email', 'class': 'form-control'})
-    )
-
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
+    username = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'email']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Allen Feldern Bootstrap-Style geben
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            # Optionale Platzhalter:
+            if field_name == 'password1':
+                field.widget.attrs['placeholder'] = 'Passwort'
+            elif field_name == 'password2':
+                field.widget.attrs['placeholder'] = 'Passwort bestätigen'

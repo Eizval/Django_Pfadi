@@ -1,0 +1,23 @@
+{
+  "name": "django_pfadi",
+  "version": "1.0.0",
+  "description": "from django.contrib.gis.geos.prototypes import cs_setx",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eizval/Django_Pfadi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eizval/Django_Pfadi/issues"
+  },
+  "homepage": "https://github.com/Eizval/Django_Pfadi#readme",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}
