@@ -3,6 +3,29 @@
 {% block title %}Login - Pfadi{% endblock %}
 
 {% block content %}
-<h2>Approve</h2>
+<h2>Nicht genehmigte Benutzer</h2>
 
+{% if users %}
+  <table>
+    <tr>
+      <th>Benutzername</th>
+      <th>Email</th>
+      <th>Aktion</th>
+    </tr>
+    {% for user in users %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <form method="post" action="{% url 'approve_user' user.id %}">
+            {% csrf_token %}
+            <button type="submit">Genehmigen</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>Alle Benutzer sind bereits genehmigt.</p>
+{% endif %}
 {% endblock %}
