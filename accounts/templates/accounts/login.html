@@ -4,5 +4,13 @@
 
 {% block content %}
 <h2>Login</h2>
-
+{% if messages %}
+<div id="popup-message">
+  {% for message in messages %}
+  <div class="alert alert-success" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
 {% endblock %}

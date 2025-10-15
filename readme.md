@@ -74,3 +74,15 @@ If you have changed something in the models.py use these 2 commands in the Termi
     python manage.py makemigrations
     python manage.py migrate
 ```
+
+# Delete User in Databse
+To delete a Single user, put in terminal:
+```python
+    python manage.py shell
+    User.objects.filter(username="test").delete()
+```
+To see the User Table
+```python
+    python manage.py shell
+    User.objects.all()
+```
