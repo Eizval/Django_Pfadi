@@ -36,3 +36,23 @@ def table_detail(request, table_name):
         fields = []
 
     return render(request, f"lager/{table_name}.html", {"objects": objects, "fields": fields})
+
+# Category list page
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, "lager/category.html", {"objects": categories})
+
+# Item list page
+def item_list(request):
+    items = Item.objects.all()
+    return render(request, "lager/item.html", {"objects": items})
+
+# Stock list page
+def stock_list(request):
+    stocks = Stock.objects.all()
+    return render(request, "lager/stock.html", {"objects": stocks})
+
+# Borrow list page
+def borrow_list(request):
+    borrows = Borrow.objects.all()
+    return render(request, "lager/borrow.html", {"objects": borrows})

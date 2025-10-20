@@ -7,14 +7,40 @@
   padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.app-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-}
+.app-header .header-left,
+.app-header .header-center,
 .app-header .header-right {
   display: flex;
   align-items: center;
+}
+.app-header .header-left {
+  flex: 1;
+}
+.app-header .header-left .back-btn {
+  text-decoration: none;
+  background-color: #007BFF;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.app-header .header-left .back-btn:hover {
+  background-color: #0056b3;
+}
+.app-header .header-center {
+  flex: 1;
+  justify-content: center;
+}
+.app-header .header-center .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+.app-header .header-right {
+  flex: 1;
+  justify-content: flex-end;
   gap: 1rem;
 }
 .app-header .header-right .username {

@@ -1,7 +1,13 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
+
 <header class="app-header">
     <div class="header-left">
+        <!-- Zurück-Button -->
+        <a href="{% url 'lager_list' %}" class="back-btn">Zurück</a>
+    </div>
+
+    <div class="header-center">
         <h1 class="logo">Pfadi Lager</h1>
     </div>
 

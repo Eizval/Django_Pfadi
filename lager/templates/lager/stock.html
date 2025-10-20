@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block header %}
+  {% include 'includes/header.html' %}
+{% endblock %}
+{% block title %}Lager{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lagerbestand Übersicht</title>
+</head>
+<body>
+<h1>Lagerbestand</h1>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>Menge</th>
+            <th>Ort</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.item.name }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.location }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
+{% endblock %}
