@@ -5,6 +5,38 @@
 {% block title %}Lager{% endblock %}
 
 {% block content %}
-<h2>Lager List</h2>
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lager Übersicht</title>
+<style>
+  .table-box {
+      display: inline-block;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      width: 180px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+  }
+  .table-box:hover { transform: scale(1.05); background-color: #e0f0ff; }
+</style>
+</head>
+<body>
+<h1>Lager Übersicht</h1>
+<div>
+    {% for table in tables %}
+        <a href="{% url 'table_detail' table.model %}">
+            <div class="table-box">
+                <h2>{{ table.name }}</h2>
+                <p>{{ table.count }} Einträge</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+</body>
+</html>
 {% endblock %}

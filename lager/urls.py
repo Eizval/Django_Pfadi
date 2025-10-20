@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('lager_edit/', views.lager_edit_view, name='lager_edit'),
     path('lager_list/', views.lager_list_view, name='lager_list'),
+    path("table/<str:table_name>/", views.table_detail, name="table_detail"),
 ]
