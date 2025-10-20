@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings  # <-- import settings for custom user model
+from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Kategorie")
@@ -50,3 +51,44 @@ class Borrow(models.Model):
 
     def __str__(self):
         return f"{self.quantity}x {self.item.name} an {self.user.username}"
+
+
+class Sold(models.Model):
+    item = models.ForeignKey('Item', on_delete=models.CASCADE, verbose_name="Artikel")
+    email = models.EmailField(verbose_name="Benutzer-E-Mail")
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Menge")
+    sold_at = models.DateTimeField(default=timezone.now, verbose_name="Verkauft am")
+    notes = models.TextField(blank=True, null=True, verbose_name="Bemerkungen")
+
+    def __str__(self):
+        return f"{self.quantity}x {self.item.name} an {self.email}"
+
+
+# Pending items (waiting for approval)
+class Pending(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Ausstehend'),
+        ('approved', 'Genehmigt'),
+        ('rejected', 'Abgelehnt'),
+    ]
+
+    item = models.ForeignKey('Item', on_delete=models.CASCADE, verbose_name="Artikel")
+    email = models.EmailField(verbose_name="Benutzer-E-Mail")
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Menge")
+    request_date = models.DateTimeField(default=timezone.now, verbose_name="Anfrage-Datum")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', verbose_name="Status")
+    notes = models.TextField(blank=True, null=True, verbose_name="Bemerkungen")
+
+    def __str__(self):
+        return f"{self.quantity}x {self.item.name} an {self.email} [{self.status}]"
+
+    def save(self, *args, **kwargs):
+        # Automatically move approved items to Sold
+        if self.status == 'approved':
+            Sold.objects.create(
+                item=self.item,
+                email=self.email,
+                quantity=self.quantity,
+                notes=self.notes
+            )
+        super().save(*args, **kwargs)

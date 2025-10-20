@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block header %}
+  {% include 'includes/header.html' %}
+{% endblock %}
+{% block title %}Lager{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Verkaufte Artikel</title>
+</head>
+<body>
+<h1>Verkaufte / Genehmigte Artikel</h1>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>E-Mail</th>
+            <th>Menge</th>
+            <th>Verkauft am</th>
+            <th>Bemerkungen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.item.name }}</td>
+            <td>{{ obj.email }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.sold_at|date:"d.m.Y H:i" }}</td>
+            <td>{{ obj.notes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
+{% endblock %}
