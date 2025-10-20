@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth import logout
 
 User = get_user_model()
 
@@ -19,7 +20,7 @@ def login_view(request):
         # Wenn Login erfolgreich
         if user is not None:
             # Prüft, ob Account vom Admin freigegeben wurde
-            if user.is_approved:
+            if user.is_approve:
                 login(request, user)
                 return redirect('lager_list')  # z. B. deine Startseite
             else:
@@ -56,3 +57,8 @@ def approve_user(request, user_id):
         user.save()
         messages.success(request, f'{user.username} wurde genehmigt!')
     return redirect('approve')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

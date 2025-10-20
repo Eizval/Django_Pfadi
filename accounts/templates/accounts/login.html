@@ -1,16 +1,26 @@
 {% extends "base.html" %}
-
 {% block title %}Login - Pfadi{% endblock %}
-
 {% block content %}
+
 <h2>Login</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Benutzername:</label>
+    <input type="text" name="username" required>
+
+    <label for="password">Passwort:</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Einloggen</button>
+</form>
+
 {% if messages %}
-<div id="popup-message">
-  {% for message in messages %}
-  <div class="alert alert-success" role="alert">
-    {{ message }}
-  </div>
-  {% endfor %}
-</div>
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+
 {% endif %}
 {% endblock %}

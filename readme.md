@@ -62,6 +62,7 @@ Make sure you have installed node.js for npm to work
 To update css you need to type this in the Terminal:
 ```python
     npx sass static/scss/styles.scss static/css/styles.css
+    npx sass static/scss/header.scss static/css/header.css
 ```
 ## Database
 For you to see the Database open the Database icon on the right side of the Screen (PyCharm). Press on the top left the + and select Datasource. 
