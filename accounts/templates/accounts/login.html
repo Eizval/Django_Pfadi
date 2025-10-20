@@ -2,25 +2,34 @@
 {% block title %}Login - Pfadi{% endblock %}
 {% block content %}
 
-<h2>Login</h2>
+<div class="login-container">
+    <div class="login-box">
 
-<form method="post">
-    {% csrf_token %}
-    <label for="username">Benutzername:</label>
-    <input type="text" name="username" required>
+        <h2>Login</h2>
 
-    <label for="password">Passwort:</label>
-    <input type="password" name="password" required>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Benutzername:</label>
+            <input type="text" name="username" required>
 
-    <button type="submit">Einloggen</button>
-</form>
+            <label for="password">Passwort:</label>
+            <input type="password" name="password" required>
 
-{% if messages %}
-  <ul>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
+            <button type="submit">Einloggen</button>
+        </form>
+
+        <div class="register-link">
+            <p>Noch kein Konto? <a href="{% url 'register' %}">Registrieren</a></p>
+        </div>
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endif %}
 {% endblock %}

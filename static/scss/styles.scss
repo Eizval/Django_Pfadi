@@ -5,7 +5,7 @@ $input-border: #d0d6db;
 $label-color: #333;
 $font-family: Arial, sans-serif;
 $background-gradient-start: #ffd817;
-$background-gradient-end: #968500;
+$background-gradient-end: #ffd817;
 
 // ---------- Container & Layout ----------
 html, body {
@@ -26,7 +26,7 @@ html, body {
   background: white;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 
   .submain {
     width: 100%;
@@ -61,7 +61,7 @@ html, body {
         &:focus {
           outline: none;
           border-color: $primary-color;
-          box-shadow: 0 0 6px rgba(92,193,132,0.22);
+          box-shadow: 0 0 6px rgba(92, 193, 132, 0.22);
         }
       }
 
@@ -99,12 +99,95 @@ html, body {
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   animation: fadeout 4s forwards;
 }
 
 @keyframes fadeout {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; display: none; }
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+
+// === LOGIN PAGE STYLES ===
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+
+  .login-box {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      label {
+        font-weight: 600;
+        color: #444;
+      }
+
+      input {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+
+        &:focus {
+          border-color: #4ca1af;
+          outline: none;
+        }
+      }
+
+      button {
+        padding: 0.75rem;
+        background-color: #4ca1af;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background-color: #357f8e;
+        }
+      }
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 1rem;
+
+      a {
+        color: #4ca1af;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }

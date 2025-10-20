@@ -1,52 +1,52 @@
 {% extends "base.html" %}
-
-{% block title %}Login - Pfadi{% endblock %}
+{% block title %}Registrieren - Pfadi{% endblock %}
 
 {% block content %}
-<div class="main">
-    <h2>Register</h2>
-    <div class="submain">
-        <form method="POST">
-            {% csrf_token %}
+<div class="login-container">
+  <div class="login-box">
+    <h2>Registrieren</h2>
 
-            <!-- Benutzername -->
-            <div class="mb-3">
-                {{ form.username.label_tag }}
-                {{ form.username }}
-                {% if form.username.errors %}
-                <div class="text-danger small">{{ form.username.errors }}</div>
-                {% endif %}
-            </div>
+    <form method="POST">
+      {% csrf_token %}
 
-            <!-- Email -->
-            <div class="mb-3">
-                {{ form.email.label_tag }}
-                {{ form.email }}
-                {% if form.email.errors %}
-                <div class="text-danger small">{{ form.email.errors }}</div>
-                {% endif %}
-            </div>
+      <div class="form-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% if form.username.errors %}
+        <div class="text-danger small">{{ form.username.errors }}</div>
+        {% endif %}
+      </div>
 
-            <!-- Passwort -->
-            <div class="mb-3">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-                {% if form.password1.errors %}
-                <div class="text-danger small">{{ form.password1.errors }}</div>
-                {% endif %}
-            </div>
+      <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.email.errors %}
+        <div class="text-danger small">{{ form.email.errors }}</div>
+        {% endif %}
+      </div>
 
-            <!-- Passwort bestätigen -->
-            <div class="mb-3">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-                {% if form.password2.errors %}
-                <div class="text-danger small">{{ form.password2.errors }}</div>
-                {% endif %}
-            </div>
+      <div class="form-group">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+        <div class="text-danger small">{{ form.password1.errors }}</div>
+        {% endif %}
+      </div>
 
-            <button type="submit" class="btn btn-primary w-100">Registrieren</button>
-        </form>
+      <div class="form-group">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+        <div class="text-danger small">{{ form.password2.errors }}</div>
+        {% endif %}
+      </div>
+
+      <button type="submit">Registrieren</button>
+    </form>
+
+    <div class="register-link">
+      <p>Schon ein Konto? <a href="{% url 'login' %}">Zum Login</a></p>
     </div>
+  </div>
 </div>
 {% endblock %}
