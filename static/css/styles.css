@@ -159,5 +159,46 @@ html, body {
 .login-container .login-box .register-link a:hover {
   text-decoration: underline;
 }
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login-container form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.login-container form .form-group label {
+  font-weight: 600;
+  color: #444;
+}
+.login-container form .form-group input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+.login-container form .form-group input:focus {
+  border-color: #4ca1af;
+  outline: none;
+}
+.login-container form .form-group .text-danger {
+  font-size: 0.85rem;
+  color: #e74c3c;
+  margin-top: 0.25rem;
+}
+.login-container form button {
+  padding: 0.75rem;
+  background-color: #4ca1af;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.login-container form button:hover {
+  background-color: #357f8e;
+}
 
 /*# sourceMappingURL=styles.css.map */
