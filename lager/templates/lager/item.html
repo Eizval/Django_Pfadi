@@ -27,9 +27,10 @@
         {% for obj in objects %}
         <tr>
             <td>{{ obj.name }}</td>
-            <td>{{ obj.category.name }}</td>
             <td>{{ obj.sku }}</td>
             <td>{{ obj.unit }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.size }}</td>
             <td>{{ obj.description }}</td>
         </tr>
         {% endfor %}

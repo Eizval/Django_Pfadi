@@ -2,24 +2,14 @@ from django.db import models
 from django.conf import settings  # <-- import settings for custom user model
 from django.utils import timezone
 
-class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="Kategorie")
-    description = models.TextField(blank=True, null=True, verbose_name="Beschreibung")
-    size = models.CharField(
-        max_length=50, blank=True, null=True,
-        verbose_name="Größe",
-        help_text="Optional: Größenangabe für Artikel wie T-Shirts oder Schuhe"
-    )
-
-    def __str__(self):
-        return self.name
 
 class Item(models.Model):
     name = models.CharField(max_length=100, verbose_name="Name")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='items', verbose_name="Kategorie")
     description = models.TextField(blank=True, null=True, verbose_name="Beschreibung")
     sku = models.CharField(max_length=50, unique=True, verbose_name="Artikelnummer")
-    unit = models.CharField(max_length=50, default='Stück', verbose_name="Einheit")
+    unit = models.CharField(max_length=50, default='Stück', verbose_name="Einheit", blank=True, null=True)
+    quantity = models.IntegerField(default=1, verbose_name="Menge")
+    size = models.CharField(max_length=10, verbose_name="Groesse", blank=True, null=True)
 
     def __str__(self):
         return self.name
