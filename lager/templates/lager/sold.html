@@ -1,18 +1,16 @@
 {% extends "base.html" %}
 {% block header %}
-  {% include 'includes/header.html' %}
+  {% include 'includes/header.html' with header_name='Gekauft'%}
 {% endblock %}
-{% block title %}Lager{% endblock %}
+{% block title %}Sold{% endblock %}
 
 {% block content %}
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Verkaufte Artikel</title>
 </head>
 <body>
-<h1>Verkaufte / Genehmigte Artikel</h1>
 <table border="1" cellpadding="5">
     <thead>
         <tr>

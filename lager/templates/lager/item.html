@@ -1,18 +1,16 @@
 {% extends "base.html" %}
 {% block header %}
-  {% include 'includes/header.html' %}
+  {% include 'includes/header.html' with header_name='Artikel'%}
 {% endblock %}
-{% block title %}Lager{% endblock %}
+{% block title %}Item{% endblock %}
 
 {% block content %}
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Artikel Übersicht</title>
 </head>
 <body>
-<h1>Artikel</h1>
 <table border="1" cellpadding="5">
     <thead>
         <tr>
