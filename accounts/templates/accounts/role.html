@@ -1,2 +1,25 @@
 {% extends "base.html" %}
 {% block title %}Roles{% endblock %}
+
+{% block content %}
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Rolle</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for role in objects %}
+        <tr>
+            <td>{{ role.id }}</td>
+            <td>{{ role.name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">Roles not Found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
