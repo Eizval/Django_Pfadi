@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import User, Role
 
 
 # ----------------------
@@ -41,3 +41,12 @@ class UserRegistrationForm(UserCreationForm):
                 field.widget.attrs['placeholder'] = 'Passwort'
             elif field_name == 'password2':
                 field.widget.attrs['placeholder'] = 'Passwort bestätigen'
+
+
+class RoleForm(forms.ModelForm):
+    class Meta:
+        model = Role
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'})
+        }

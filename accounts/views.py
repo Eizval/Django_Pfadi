@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from accounts.forms import UserRegistrationForm
+from accounts.forms import UserRegistrationForm, RoleForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth import logout
+
+from accounts.models import Role
 
 User = get_user_model()
 
@@ -47,7 +49,12 @@ def register_view(request):
 def approve_view(request):
     unapproved_users = User.objects.filter(is_approve=False)
 
-    return render(request, "accounts/approve.html", {"users": unapproved_users})
+    context = {
+        "users": unapproved_users,
+        "role_url": "/role/",  # oder nutze reverse('role') wenn URL-Name gesetzt
+        "allusers_url": "/all_users/"  # oder reverse('allusers')
+    }
+    return render(request, "accounts/approve.html", context)
 
 # @login_required
 # @user_passes_test(lambda u: u.is_superuser)
@@ -63,3 +70,48 @@ def approve_user(request, user_id):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def all_users_view(request):
+    allusers = User.objects.all()
+    return render(request, "accounts/allusers.html", {"objects": allusers})
+
+    # sort = request.GET.get('sort', 'id')  # Standardsortierung nach ID
+    # direction = request.GET.get('dir', 'asc')  # Standard: aufsteigend
+    # if direction == 'desc':
+    #     sort = f'-{sort}'  # minus für absteigend
+    # allusers = User.objects.all().order_by(sort)
+    # context = {
+    #     "objects": allusers,
+    #     "current_sort": request.GET.get('sort', 'id'),
+    #     "current_dir": request.GET.get('dir', 'asc')
+    # }
+    # return render(request, "accounts/allusers.html", context)
+
+# def user_list(request):
+#     users = User.objects.all()
+#     columns = [
+#         ('id', 'ID'),
+#         ('username', 'Username'),
+#         ('email', 'Email'),
+#         ('is_staff', 'Staff?'),
+#         ('is_superuser', 'Superuser?'),
+#         ('is_approve', 'Approved?')
+#     ]
+#     current_sort = request.GET.get("sort", "")
+#     current_dir = request.GET.get("dir", "asc")
+#     return render(request, "user_list.html", {
+#         "objects": users,
+#         "columns": columns,
+#         "current_sort": current_sort,
+#         "current_dir": current_dir
+#     })
+
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def role_view(request):
+    roles = Role.objects.all()
+    return render(request, "accounts/role.html", {"objects": roles})
+

@@ -7,4 +7,6 @@ urlpatterns = [
     path('approve/', views.approve_view, name='approve'),
     path('approve/<int:user_id>/', views.approve_user, name='approve_user'),
     path('logout/', views.logout_view, name='logout'),
+    path('all_users/', views.all_users_view, name='all_users'),
+    path('role/', views.role_view, name='role'),
 ]
