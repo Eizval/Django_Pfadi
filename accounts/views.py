@@ -115,3 +115,21 @@ def role_view(request):
     roles = Role.objects.all()
     return render(request, "accounts/role.html", {"objects": roles})
 
+# ---------- Rollen zu Benutzer hinzufügen ----------
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def add_role_view(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    roles = Role.objects.all()
+
+    if request.method == 'POST':
+        selected_role_id = request.POST.get('roles')  # nur eine Rolle erlaubt
+        if selected_role_id:
+            user.role_id = selected_role_id  # direkte FK-Zuweisung
+            user.save()
+        return redirect('all_users')
+
+    context = {'user': user, 'roles': roles}
+    return render(request, 'accounts/add_role.html', context)
+
+

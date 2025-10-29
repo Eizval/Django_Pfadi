@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Role{% endblock %}
+
+{% block content %}
+
+<h2>Rolle für {{ user.username }} auswählen</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="roles">Rolle auswählen:</label>
+  <select name="roles" id="roles">
+    {% for role in roles %}
+      <option value="{{ role.id }}" {% if user.role and user.role.id == role.id %}selected{% endif %}>
+        {{ role.name }}
+      </option>
+    {% endfor %}
+  </select>
+  <br><br>
+  <button type="submit">Speichern</button>
+</form>
+
+
+{% endblock %}
