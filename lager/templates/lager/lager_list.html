@@ -9,7 +9,6 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Lager Übersicht</title>
 <style>
   .table-box {
       display: inline-block;
@@ -26,7 +25,6 @@
 </style>
 </head>
 <body>
-<h1>Lager Übersicht</h1>
 <div>
     {% for table in tables %}
         <a href="{% url 'table_detail' table.model %}">
