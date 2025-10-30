@@ -1,18 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
 {% block header %}
-  {% include 'includes/header.html' with header_name='Bestellt'%}
+{% include 'includes/header.html' with header_name='Bestellt'%}
 {% endblock %}
 {% block title %}Lager{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
-<table border="1" cellpadding="5">
-    <thead>
+<div class="stock-container">
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <table class="stock-table">
+        <thead>
         <tr>
             <th>Artikel</th>
             <th>E-Mail</th>
@@ -21,8 +26,8 @@
             <th>Anfrage-Datum</th>
             <th>Bemerkungen</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         {% for obj in objects %}
         <tr>
             <td>{{ obj.item.name }}</td>
@@ -32,9 +37,14 @@
             <td>{{ obj.request_date|date:"d.m.Y H:i" }}</td>
             <td>{{ obj.notes }}</td>
         </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Keine Bestellungen</td>
+        </tr>
         {% endfor %}
-    </tbody>
-</table>
-</body>
-</html>
+        </tbody>
+    </table>
+    </body>
+    </html>
+</div>
 {% endblock %}

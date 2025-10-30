@@ -1,18 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
 {% block header %}
-  {% include 'includes/header.html' with header_name='Ausleihen' %}
+{% include 'includes/header.html' with header_name='Ausleihen' %}
 {% endblock %}
 {% block title %}Borrow{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
-<table border="1" cellpadding="5">
-    <thead>
+<div class="stock-container">
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <table class="stock-table">
+        <thead>
         <tr>
             <th>Artikel</th>
             <th>Benutzer</th>
@@ -21,8 +26,8 @@
             <th>Rückgabedatum</th>
             <th>Status</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         {% for obj in objects %}
         <tr>
             <td>{{ obj.item.name }}</td>
@@ -30,11 +35,22 @@
             <td>{{ obj.quantity }}</td>
             <td>{{ obj.borrowed_at|date:"d.m.Y H:i" }}</td>
             <td>{% if obj.returned_at %}{{ obj.returned_at|date:"d.m.Y H:i" }}{% else %}---{% endif %}</td>
-            <td>{% if obj.status == 'borrowed' %}Ausgeliehen{% else %}Zurückgegeben{% endif %}</td>
+            <td>
+                {% if obj.status == 'borrowed' %}
+                <span class="status borrowed">Ausgeliehen</span>
+                {% else %}
+                <span class="status returned">Zurückgegeben</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Keine Ausleihen vorhanden</td>
         </tr>
         {% endfor %}
-    </tbody>
-</table>
-</body>
-</html>
+        </tbody>
+    </table>
+    </body>
+    </html>
+</div>
 {% endblock %}

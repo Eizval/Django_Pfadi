@@ -65,6 +65,7 @@ To update css you need to type this in the Terminal:
     npx sass static/scss/header.scss static/css/header.css
     npx sass static/scss/admin_header.scss static/css/admin_header.css
     npx sass static/scss/credentials.scss static/css/credentials.css
+    npx sass static/scss/stock.scss static/css/stock.css
 ```
 ## Database
 For you to see the Database open the Database icon on the right side of the Screen (PyCharm). Press on the top left the + and select Datasource. 

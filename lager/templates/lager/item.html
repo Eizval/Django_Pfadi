@@ -1,18 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
 {% block header %}
-  {% include 'includes/header.html' with header_name='Artikel'%}
+{% include 'includes/header.html' with header_name='Artikel'%}
 {% endblock %}
 {% block title %}Item{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
-<table border="1" cellpadding="5">
-    <thead>
+<div class="stock-container">
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <table class="stock-table">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Kategorie</th>
@@ -20,8 +25,8 @@
             <th>Einheit</th>
             <th>Beschreibung</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         {% for obj in objects %}
         <tr>
             <td>{{ obj.name }}</td>
@@ -31,9 +36,14 @@
             <td>{{ obj.size }}</td>
             <td>{{ obj.description }}</td>
         </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Keine Artikel vorhanden</td>
+        </tr>
         {% endfor %}
-    </tbody>
-</table>
-</body>
-</html>
+        </tbody>
+    </table>
+    </body>
+    </html>
+</div>
 {% endblock %}

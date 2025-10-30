@@ -1,0 +1,60 @@
+.stock-container {
+  max-width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.stock-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stock-table th,
+.stock-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.stock-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  text-align: left;
+}
+
+.stock-table tr:hover {
+  background-color: #f9fafb;
+}
+
+.status {
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.status.borrowed {
+  background-color: #ffe1a8;
+  color: #856404;
+}
+
+.status.returned {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.no-data {
+  text-align: center;
+  color: #777;
+  padding: 1rem;
+}
+
+/*# sourceMappingURL=stock.css.map */
