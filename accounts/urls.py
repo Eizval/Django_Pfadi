@@ -10,4 +10,6 @@ urlpatterns = [
     path('all_users/', views.all_users_view, name='all_users'),
     path('role/', views.role_view, name='role'),
     path('all_users/<int:user_id>/', views.add_role_view, name='add_role'),
+    path('create_role/', views.create_role_view, name='create_role'),
+    path('role/<int:role_id>', views.delete_role_view, name='delete_role'),
 ]

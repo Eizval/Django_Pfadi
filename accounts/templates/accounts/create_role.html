@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block header %}
+  {% include 'includes/header.html' with header_name='Rolle erstellen' %}
+{% endblock %}
+
+{% block title %}Neue Rolle{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <label for="name">Rollenname:</label>
+    <input type="text" name="role" id="name" required>
+    <button type="submit">Erstellen</button>
+</form>
+{% endblock %}

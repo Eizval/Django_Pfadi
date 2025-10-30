@@ -50,3 +50,11 @@ class RoleForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'})
         }
+
+class RoleCreateForm(forms.ModelForm):
+    class Meta:
+        model = Role
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'})
+        }

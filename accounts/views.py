@@ -9,6 +9,7 @@ from accounts.models import Role
 
 User = get_user_model()
 
+
 # Create your views here.
 def login_view(request):
     # Wenn Formular gesendet wird
@@ -33,6 +34,7 @@ def login_view(request):
     # GET → Seite anzeigen
     return render(request, 'accounts/login.html')
 
+
 def register_view(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
@@ -43,6 +45,7 @@ def register_view(request):
     else:
         form = UserRegistrationForm()
     return render(request, "accounts/register.html", {"form": form})
+
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
@@ -55,6 +58,7 @@ def approve_view(request):
         "allusers_url": "/all_users/"  # oder reverse('allusers')
     }
     return render(request, "accounts/approve.html", context)
+
 
 # @login_required
 # @user_passes_test(lambda u: u.is_superuser)
@@ -70,6 +74,7 @@ def approve_user(request, user_id):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
@@ -88,6 +93,7 @@ def all_users_view(request):
     #     "current_dir": request.GET.get('dir', 'asc')
     # }
     # return render(request, "accounts/allusers.html", context)
+
 
 # def user_list(request):
 #     users = User.objects.all()
@@ -115,6 +121,7 @@ def role_view(request):
     roles = Role.objects.all()
     return render(request, "accounts/role.html", {"objects": roles})
 
+
 # ---------- Rollen zu Benutzer hinzufügen ----------
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
@@ -127,9 +134,30 @@ def add_role_view(request, user_id):
         if selected_role_id:
             user.role_id = selected_role_id  # direkte FK-Zuweisung
             user.save()
-        return redirect('all_users')
-
+            return redirect('all_users')
     context = {'user': user, 'roles': roles}
     return render(request, 'accounts/add_role.html', context)
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def create_role_view(request):
+    if request.method == 'POST':
+        role = request.POST.get('role')
+        if role:
+            Role.objects.get_or_create(name=role)
+            return redirect('role')
+    return render(request, 'accounts/create_role.html')
+
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def delete_role_view(request, role_id):
+    role = get_object_or_404(Role, pk=role_id)
+    has_users = User.objects.filter(role=role).exists()
+    if has_users:
+        messages.error(request, 'Du kannst diese Rolle nicht Löschen da ein User diese Rolle besitzt.')
+    else:
+        role.delete()
+        messages.success(request, "Rolle wurde erfolgreich gelöscht.")
+    return redirect('role')

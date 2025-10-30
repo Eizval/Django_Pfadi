@@ -1,25 +1,71 @@
 {% extends "base.html" %}
-{% block title %}Roles{% endblock %}
-
+{% block title %}Rollenverwaltung{% endblock %}
 {% block content %}
-<table border="1" cellpadding="8" cellspacing="0">
+<div class="role-container">
+  <h1>Rollenübersicht</h1>
+
+  <table class="role-table">
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Rolle</th>
-        </tr>
+      <tr>
+        <th>ID</th>
+        <th>Rolle</th>
+        <th>Aktion</th>
+      </tr>
     </thead>
     <tbody>
-        {% for role in objects %}
-        <tr>
-            <td>{{ role.id }}</td>
-            <td>{{ role.name }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="6">Roles not Found.</td>
-        </tr>
-        {% endfor %}
+      {% for role in objects %}
+      <tr>
+        <td>{{ role.id }}</td>
+        <td>{{ role.name }}</td>
+        <td>
+          <a href="#"
+             class="delete-link"
+             data-url="{% url 'delete_role' role.id %}">
+             🗑
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" class="no-data">Keine Rollen gefunden.</td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table>
+  </table>
+
+  <a href="{% url 'create_role' %}" class="add-btn">+ Rolle hinzufügen</a>
+</div>
+
+<!-- Popup -->
+<div id="confirm-modal" class="modal">
+  <div class="modal-content">
+    <p>Willst du diese Rolle wirklich löschen?</p>
+    <div class="buttons">
+      <button id="confirm-yes">Ja</button>
+      <button id="confirm-no">Abbrechen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openAddRoleModal(userId) {
+  const modal = document.getElementById('addRoleModal');
+  const form = modal.querySelector('form');
+  form.action = `/add_role/${userId}/`;
+  modal.style.display = 'flex';
+}
+
+function closeAddRoleModal() {
+  document.getElementById('addRoleModal').style.display = 'none';
+}
+
+// Optional: Schließen bei Klick außerhalb
+window.onclick = function(event) {
+  const modal = document.getElementById('addRoleModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
+
 {% endblock %}

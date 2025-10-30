@@ -206,4 +206,301 @@ html, body {
   background-color: #357f8e;
 }
 
+.messages {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 20%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.5s forwards, fadeOut 0.5s ease 2.5s forwards;
+}
+.message.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.message.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 30%;
+  min-width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.buttons button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.buttons #confirm-yes {
+  background-color: #e74c3c;
+  color: white;
+}
+.buttons #confirm-yes:hover {
+  background-color: #bf3d30;
+}
+.buttons #confirm-no {
+  background-color: #ccc;
+}
+.buttons #confirm-no:hover {
+  background-color: #b3b1b1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.role-container {
+  max-width: 60%;
+  margin: 80px auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.role-container h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.role-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+.role-table th, .role-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.role-table th {
+  background: #5cc184;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.role-table tr:hover {
+  background-color: #f7f7f7;
+  transition: background-color 0.2s ease;
+}
+.role-table .no-data {
+  text-align: center;
+  color: #888;
+}
+.role-table a.delete-link {
+  color: #e74c3c;
+  font-size: 18px;
+  text-decoration: none;
+}
+.role-table a.delete-link:hover {
+  color: #bf3d30;
+}
+
+.add-btn {
+  display: inline-block;
+  background-color: #5cc184;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.add-btn:hover {
+  background-color: #479666;
+}
+
+.user-container {
+  max-width: 60%;
+  margin: 80px auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.user-container h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333333;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+.user-table th, .user-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.user-table th {
+  background: #5cc184;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.user-table tr:hover {
+  background-color: #f7f7f7;
+  transition: background-color 0.2s ease;
+}
+.user-table td {
+  color: #333333;
+}
+.user-table .no-data {
+  text-align: center;
+  color: #888888;
+}
+
+.add_role_button .btn {
+  display: inline-block;
+  background-color: #5cc184;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.add_role_button .btn:hover {
+  background-color: #4da773;
+}
+
+#addRoleModal.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+#addRoleModal .modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 30%;
+  min-width: 320px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+#addRoleModal h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+#addRoleModal select {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 1.5rem;
+}
+
+#addRoleModal .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+#addRoleModal .buttons .btn-save {
+  background-color: #5cc184;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#addRoleModal .buttons .btn-save:hover {
+  background-color: #4da773;
+}
+#addRoleModal .buttons .btn-cancel {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#addRoleModal .buttons .btn-cancel:hover {
+  background-color: #b1b1b1;
+}
+
 /*# sourceMappingURL=styles.css.map */
