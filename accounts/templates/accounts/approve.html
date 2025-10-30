@@ -1,35 +1,41 @@
 {% extends "base.html" %}
 {% block header %}
-  {% include 'includes/header.html' with header_name='Genehmigen' %}
+{% include 'includes/admin_header.html' %}
 {% endblock %}
 {% block title %}Login - Pfadi{% endblock %}
 
 {% block content %}
-<h2>Nicht genehmigte Benutzer</h2>
+<div class="approve-container">
+    <h2>Nicht genehmigte Benutzer</h2>
 
-{% if users %}
-  <table>
-    <tr>
-      <th>Benutzername</th>
-      <th>Email</th>
-      <th>Aktion</th>
-    </tr>
-    {% for user in users %}
-      <tr>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>
-          <form method="post" action="{% url 'approve_user' user.id %}">
-            {% csrf_token %}
-            <button type="submit">Genehmigen</button>
-          </form>
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
-<a href="{{ role_url }}"><button>Go to Role Page</button></a>
-<a href="{{ allusers_url }}"><button>Go to All Users Page</button></a>
-{% else %}
-  <p>Alle Benutzer sind bereits genehmigt.</p>
-{% endif %}
+    {% if users %}
+    <table class="approve-table">
+        <tr>
+            <th>Benutzername</th>
+            <th>Email</th>
+            <th>Aktion</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <form method="post" action="{% url 'approve_user' user.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Genehmigen</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ role_url }}" class="action-btn">
+        Go to Role Page
+    </a>
+    <a href="{{ allusers_url }}" class="action-btn">
+        Go to All Users Page
+    </a>
+    {% else %}
+    <p class="no-data" >Alle Benutzer sind bereits genehmigt.</p>
+    {% endif %}
+</div>
 {% endblock %}

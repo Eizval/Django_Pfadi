@@ -63,6 +63,7 @@ To update css you need to type this in the Terminal:
 ```python
     npx sass static/scss/styles.scss static/css/styles.css
     npx sass static/scss/header.scss static/css/header.css
+    npx sass static/scss/admin_header.scss static/css/admin_header.css
     npx sass static/scss/credentials.scss static/css/credentials.css
 ```
 ## Database
