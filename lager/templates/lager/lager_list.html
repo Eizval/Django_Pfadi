@@ -1,40 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
 {% block header %}
   {% include 'includes/header.html' %}
 {% endblock %}
 {% block title %}Lager{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<style>
-  .table-box {
-      display: inline-block;
-      border: 2px solid #007BFF;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 10px;
-      width: 180px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-  }
-  .table-box:hover { transform: scale(1.05); background-color: #e0f0ff; }
-</style>
-</head>
-<body>
-<div>
+<div class="lager-container">
     {% for table in tables %}
-        <a href="{% url 'table_detail' table.model %}">
-            <div class="table-box">
-                <h2>{{ table.name }}</h2>
-                <p>{{ table.count }} Einträge</p>
-            </div>
-        </a>
+    <a href="{% url 'table_detail' table.model %}" class="table-link">
+        <div class="table-box">
+            <h2>{{ table.name }}</h2>
+            <p>{{ table.count }} Einträge</p>
+        </div>
+    </a>
+    {% empty %}
+    <p class="no-data">Keine Lager vorhanden</p>
     {% endfor %}
 </div>
-</body>
-</html>
 {% endblock %}
