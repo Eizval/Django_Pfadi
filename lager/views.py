@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Item, Stock, Borrow, Pending, Sold
 from .decorators import role_or_superuser_required
+from .forms import ItemForm
 
 @login_required
 def lager_edit_view(request):
     return render(request, "lager/lager_edit.html", {})
+
+
 
 @login_required
 def lager_list_view(request):
@@ -55,6 +58,37 @@ def table_detail(request, table_name):
 def item_list(request):
     items = Item.objects.all()
     return render(request, "lager/item.html", {"objects": items})
+
+@login_required
+def item_create(request):
+    if request.method == "POST":
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("item_list")
+    else:
+        form = ItemForm()
+    return render(request, "lager/item_form.html", {"form": form})
+
+@login_required
+def item_edit(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    if request.method == "POST":
+        form = ItemForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect("item_list")
+    else:
+        form = ItemForm(instance=item)
+    return render(request, "lager/item_form.html", {"form": form})
+
+@login_required
+def item_delete(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    if request.method == "POST":
+        item.delete()
+        return redirect("item_list")
+    return render(request, "lager/item_confirm_delete.html", {"object": item})
 
 # Stock list page
 @login_required

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Artikel wirklich löschen?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Löschen</button>
+    <a href="{% url 'item_list' %}">Abbrechen</a>
+  </form>
+{% endblock %}

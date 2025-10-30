@@ -20,10 +20,12 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Kategorie</th>
             <th>Artikelnummer</th>
             <th>Einheit</th>
+            <th>Menge</th>
+            <th>Grösse</th>
             <th>Beschreibung</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -35,14 +37,27 @@
             <td>{{ obj.quantity }}</td>
             <td>{{ obj.size }}</td>
             <td>{{ obj.description }}</td>
+            <td>
+                <a href="{% url 'item_edit' obj.pk %}">✎</a>
+                <form action="{% url 'item_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du diesen Artikel wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="6" class="no-data">Keine Artikel vorhanden</td>
+            <td colspan="7" class="no-data">Keine Artikel vorhanden</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div style="margin-top:10px;">
+        <a href="{% url 'item_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
     </body>
     </html>
 </div>
