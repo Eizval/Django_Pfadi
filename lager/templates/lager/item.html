@@ -38,6 +38,7 @@
             <td>{{ obj.size }}</td>
             <td>{{ obj.description }}</td>
             <td>
+                {% if user.is_superuser or role_id == 1 %}
                 <a href="{% url 'item_edit' obj.pk %}">✎</a>
                 <form action="{% url 'item_delete' obj.pk %}"
                       method="post"
@@ -46,6 +47,7 @@
                     {% csrf_token %}
                     <button type="submit" style="background:transparent;border:none;color:red;">−</button>
                 </form>
+                {% endif %}
             </td>
         </tr>
         {% empty %}
@@ -55,9 +57,11 @@
         {% endfor %}
         </tbody>
     </table>
+    {% if user.is_superuser or role_id == 1 %}
     <div style="margin-top:10px;">
         <a href="{% url 'item_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
     </div>
+    {% endif %}
     </body>
     </html>
 </div>

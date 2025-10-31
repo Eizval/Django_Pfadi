@@ -60,6 +60,7 @@ def item_list(request):
     return render(request, "lager/item.html", {"objects": items})
 
 @login_required
+@role_or_superuser_required(1)
 def item_create(request):
     if request.method == "POST":
         form = ItemForm(request.POST)
@@ -71,6 +72,7 @@ def item_create(request):
     return render(request, "lager/item_form.html", {"form": form})
 
 @login_required
+@role_or_superuser_required(1)
 def item_edit(request, pk):
     item = get_object_or_404(Item, pk=pk)
     if request.method == "POST":
@@ -83,6 +85,7 @@ def item_edit(request, pk):
     return render(request, "lager/item_form.html", {"form": form})
 
 @login_required
+@role_or_superuser_required(1)
 def item_delete(request, pk):
     item = get_object_or_404(Item, pk=pk)
     if request.method == "POST":
