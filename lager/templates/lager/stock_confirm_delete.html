@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Lagerbestand wirklich löschen?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Löschen</button>
+    <a href="{% url 'stock_list' %}">Abbrechen</a>
+  </form>
+{% endblock %}

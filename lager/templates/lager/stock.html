@@ -31,7 +31,7 @@
                 <form action="{% url 'stock_delete' obj.pk %}"
                       method="post"
                       style="display:inline;"
-                      onsubmit="return confirm('Willst du diesen Artikel wirklich löschen?');">
+                      onsubmit="return confirm('Willst du diesen Lagerbestand wirklich löschen?');">
                     {% csrf_token %}
                     <button type="submit" style="background:transparent;border:none;color:red;">−</button>
                 </form>
