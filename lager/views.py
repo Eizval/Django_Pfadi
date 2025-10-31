@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Item, Stock, Borrow, Pending, Sold
 from .decorators import role_or_superuser_required
-from .forms import ItemForm
+from .forms import ItemForm, StockForm
 
 @login_required
 def lager_edit_view(request):
@@ -98,6 +98,40 @@ def item_delete(request, pk):
 def stock_list(request):
     stocks = Stock.objects.all()
     return render(request, "lager/stock.html", {"objects": stocks})
+
+@login_required
+@role_or_superuser_required(1)
+def stock_create(request):
+    if request.method == "POST":
+        form = StockForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("stock_list")
+    else:
+        form = StockForm()
+    return render(request, "lager/stock_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def stock_edit(request, pk):
+    stock = get_object_or_404(Stock, pk=pk)
+    if request.method == "POST":
+        form = StockForm(request.POST, instance=stock)
+        if form.is_valid():
+            form.save()
+            return redirect("stock_list")
+    else:
+        form = StockForm(instance=stock)
+    return render(request, "lager/stock_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def stock_delete(request, pk):
+    stock = get_object_or_404(Stock, pk=pk)
+    if request.method == "POST":
+        stock.delete()
+        return redirect("stock_list")
+    return render(request, "lager/stock_confirm_delete.html", {"object": stock})
 
 # Borrow list page
 @login_required
