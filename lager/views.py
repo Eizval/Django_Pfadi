@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Item, Stock, Borrow, Pending, Sold
 from .decorators import role_or_superuser_required
-from .forms import ItemForm, StockForm
+from .forms import ItemForm, StockForm, BorrowForm
 
 @login_required
 def lager_edit_view(request):
@@ -139,6 +139,40 @@ def stock_delete(request, pk):
 def borrow_list(request):
     borrows = Borrow.objects.all()
     return render(request, "lager/borrow.html", {"objects": borrows})
+
+@login_required
+@role_or_superuser_required(1)
+def borrow_create(request):
+    if request.method == "POST":
+        form = BorrowForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("borrow_list")
+    else:
+        form = BorrowForm()
+    return render(request, "lager/borrow_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def borrow_edit(request, pk):
+    borrow = get_object_or_404(Borrow, pk=pk)
+    if request.method == "POST":
+        form = BorrowForm(request.POST, instance=borrow)
+        if form.is_valid():
+            form.save()
+            return redirect("borrow_list")
+    else:
+        form = BorrowForm(instance=borrow)
+    return render(request, "lager/borrow_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def borrow_delete(request, pk):
+    borrow = get_object_or_404(Borrow, pk=pk)
+    if request.method == "POST":
+        borrow.delete()
+        return redirect("borrow_list")
+    return render(request, "lager/borrow_confirm_delete.html", {"object": borrow})
 
 @login_required
 @role_or_superuser_required(1)

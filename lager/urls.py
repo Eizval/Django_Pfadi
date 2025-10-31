@@ -14,6 +14,9 @@ urlpatterns = [
     path('stocks/<int:pk>/edit/', views.stock_edit, name='stock_edit'),
     path('stocks/<int:pk>/delete/', views.stock_delete, name='stock_delete'),
     path("borrows/", views.borrow_list, name="borrow_list"),
+    path("borrows/new/", views.borrow_create, name="borrow_create"),
+    path("borrows/<int:pk>/edit/", views.borrow_edit, name="borrow_edit"),
+    path("borrows/<int:pk>/delete/", views.borrow_delete, name="borrow_delete"),
     path("pending/", views.pending_list, name="pending_list"),
     path("sold/", views.sold_list, name="sold_list"),
 ]
