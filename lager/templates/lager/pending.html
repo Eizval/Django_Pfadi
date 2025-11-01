@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
+{% block header %}
+{% include 'includes/header.html' with header_name='Bestellt'%}
+{% endblock %}
+{% block title %}Lager{% endblock %}
+
+{% block content %}
+<div class="stock-container">
+
+    <table class="stock-table">
+        <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>E-Mail</th>
+            <th>Menge</th>
+            <th>Status</th>
+            <th>Anfrage-Datum</th>
+            <th>Bemerkungen</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.item.name }}</td>
+            <td>{{ obj.email }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.get_status_display }}</td>
+            <td>{{ obj.request_date|date:"d.m.Y H:i" }}</td>
+            <td>{{ obj.notes }}</td>
+            <td>
+                <a href="{% url 'pending_edit' obj.pk %}">✎</a>
+                <form action="{% url 'pending_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du Bestellung wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Keine Bestellungen</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-top:10px;">
+        <a href="{% url 'pending_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
+</div>
+{% endblock %}

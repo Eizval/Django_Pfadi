@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+<header class="app-header">
+    <div class="header-left">
+        <!-- Zurück-Button -->
+        <a href="{% url 'lager_list' %}" class="back-btn">Zurück</a>
+    </div>
+
+    <div class="header-center">
+        <h1 class="logo">{{ header_name|default:"Pfadi Lager" }}</h1>
+    </div>
+
+    <div class="header-right">
+        {% if user.is_authenticated %}
+        <span class="username">Eingeloggt als, <span class="username-highlight">{{ user.username }}</span></span>
+        <form action="{% url 'logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="login-link">Login</a>
+        {% endif %}
+    </div>
+</header>

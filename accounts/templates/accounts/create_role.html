@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block header %}
+{% include 'includes/admin_header.html' %}
+{% endblock %}
+{% block title %}Neue Rolle{% endblock %}
+
+{% block content %}
+<div class="create-role-container">
+    <form method="post" class="create-role-form">
+        {% csrf_token %}
+        <h2>Neue Rolle erstellen</h2>
+        <label for="name">Rollenname:</label>
+        <input type="text" name="role" id="name" required>
+        <button type="submit">Erstellen</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
+{% block header %}
+{% include 'includes/header.html' with header_name='Lagerbestand' %}
+{% endblock %}
+{% block title %}Stock{% endblock %}
+
+{% block content %}
+<div class="stock-container">
+    <table class="stock-table">
+        <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>Menge</th>
+            <th>Ort</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.item.name }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.location }}</td>
+            <td>
+                {% if user.is_superuser or role_id == 1 %}
+                <a href="{% url 'stock_edit' obj.pk %}">✎</a>
+                <form action="{% url 'stock_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du diesen Lagerbestand wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Kein Lagebestand vorhanden</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if user.is_superuser or role_id == 1 %}
+    <div style="margin-top:10px;">
+        <a href="{% url 'stock_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

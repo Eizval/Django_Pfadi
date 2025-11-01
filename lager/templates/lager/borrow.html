@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
+{% block header %}
+{% include 'includes/header.html' with header_name='Ausleihen' %}
+{% endblock %}
+{% block title %}Borrow{% endblock %}
+
+{% block content %}
+<div class="stock-container">
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <table class="stock-table">
+        <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>Benutzer</th>
+            <th>Menge</th>
+            <th>Ausleihdatum</th>
+            <th>Rückgabedatum</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.item.name }}</td>
+            <td>{{ obj.user.username }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.borrowed_at|date:"d.m.Y H:i" }}</td>
+            <td>{% if obj.returned_at %}{{ obj.returned_at|date:"d.m.Y H:i" }}{% else %}---{% endif %}</td>
+            <td>
+                {% if obj.status == 'borrowed' %}
+                <span class="status borrowed">Ausgeliehen</span>
+                {% else %}
+                <span class="status returned">Zurückgegeben</span>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'borrow_edit' obj.pk %}">✎</a>
+                <form action="{% url 'borrow_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du diese Leihe wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Keine Ausleihen vorhanden</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-top:10px;">
+        <a href="{% url 'borrow_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
+    </body>
+    </html>
+</div>
+{% endblock %}

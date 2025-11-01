@@ -1,8 +1,24 @@
 {% extends "base.html" %}
-
-{% block title %}Login - Pfadi{% endblock %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
+{% block header %}
+  {% include 'includes/header.html' %}
+{% endblock %}
+{% block title %}Lager{% endblock %}
 
 {% block content %}
-<h2>Lager List</h2>
-
+<div class="lager-container">
+    {% for table in tables %}
+            <a href="{% url 'table_detail' table.model %}" class="table-link">
+                <div class="table-box">
+                    <h2>{{ table.name }}</h2>
+                    <p>{{ table.count }} Einträge</p>
+                </div>
+            </a>
+    {% empty %}
+        <p class="no-data">Keine Lager vorhanden</p>
+    {% endfor %}
+</div>
 {% endblock %}

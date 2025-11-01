@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Verkauf {{ form.instance.pk|yesno:"Bearbeiten,Neu" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Speichern</button>
+    <a href="{% url 'sold_list' %}">Abbrechen</a>
+</form>
+{% endblock %}

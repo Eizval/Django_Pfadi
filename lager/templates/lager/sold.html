@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
+{% block header %}
+{% include 'includes/header.html' with header_name='Gekauft'%}
+{% endblock %}
+{% block title %}Sold{% endblock %}
+
+{% block content %}
+<div class="stock-container">
+    <table class="stock-table">
+        <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>E-Mail</th>
+            <th>Menge</th>
+            <th>Verkauft am</th>
+            <th>Bemerkungen</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.item.name }}</td>
+            <td>{{ obj.email }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.sold_at|date:"d.m.Y H:i" }}</td>
+            <td>{{ obj.notes }}</td>
+            <td>
+                <a href="{% url 'sold_edit' obj.pk %}">✎</a>
+                <form action="{% url 'sold_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du diesen Kauf wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="no-data">Nichts wurde bissher verkauft</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-top:10px;">
+        <a href="{% url 'sold_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
+</div>
+{% endblock %}

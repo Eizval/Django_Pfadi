@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+{% endblock %}
+{% block header %}
+{% include 'includes/header.html' with header_name='Artikel'%}
+{% endblock %}
+{% block title %}Item{% endblock %}
+
+{% block content %}
+<div class="stock-container">
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <table class="stock-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Artikelnummer</th>
+            <th>Einheit</th>
+            <th>Menge</th>
+            <th>Grösse</th>
+            <th>Beschreibung</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in objects %}
+        <tr>
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.sku }}</td>
+            <td>{{ obj.unit }}</td>
+            <td>{{ obj.quantity }}</td>
+            <td>{{ obj.size }}</td>
+            <td>{{ obj.description }}</td>
+            <td>
+                {% if user.is_superuser or role_id == 1 %}
+                <a href="{% url 'item_edit' obj.pk %}">✎</a>
+                <form action="{% url 'item_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du diesen Artikel wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="no-data">Keine Artikel vorhanden</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if user.is_superuser or role_id == 1 %}
+    <div style="margin-top:10px;">
+        <a href="{% url 'item_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
+    {% endif %}
+    </body>
+    </html>
+</div>
+{% endblock %}

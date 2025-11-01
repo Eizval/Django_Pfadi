@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Lager bearbeiten/hinzufügen</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Speichern</button>
+      <a href="{% url 'stock_list' %}">Abbrechen</a>
+  </form>
+{% endblock %}
