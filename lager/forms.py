@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import Item, Stock, Borrow
+from .models import Item, Stock, Borrow, Sold
 
 
 class ItemForm(forms.ModelForm):
@@ -17,3 +17,14 @@ class BorrowForm(forms.ModelForm):
     class Meta:
         model = Borrow
         fields = ['quantity', 'returned_at', 'status', 'user', 'item']
+        widgets = {
+            'returned_at': forms.DateInput(attrs={'type': 'date'})
+        }
+
+class SoldForm(forms.ModelForm):
+    class Meta:
+        model = Sold
+        fields = ['item', 'email', 'quantity', 'sold_at', 'notes']
+        widgets = {
+            'sold_at': forms.DateTimeInput(attrs={'type': 'datetime-local'})
+        }

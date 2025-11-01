@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Item, Stock, Borrow, Pending, Sold
 from .decorators import role_or_superuser_required
-from .forms import ItemForm, StockForm, BorrowForm
+from .forms import ItemForm, StockForm, BorrowForm, SoldForm
 
 @login_required
 def lager_edit_view(request):
@@ -185,3 +185,37 @@ def pending_list(request):
 def sold_list(request):
     sold_items = Sold.objects.all()
     return render(request, "lager/sold.html", {"objects": sold_items})
+
+@login_required
+@role_or_superuser_required(1)
+def sold_create(request):
+    if request.method == "POST":
+        form = SoldForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("sold_list")
+    else:
+        form = SoldForm()
+    return render(request, "lager/sold_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def sold_edit(request, pk):
+    sold = get_object_or_404(Sold, pk=pk)
+    if request.method == "POST":
+        form = SoldForm(request.POST, instance=sold)
+        if form.is_valid():
+            form.save()
+            return redirect("sold_list")
+    else:
+        form = SoldForm(instance=sold)
+    return render(request, "lager/sold_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def sold_delete(request, pk):
+    sold = get_object_or_404(Sold, pk=pk)
+    if request.method == "POST":
+        sold.delete()
+        return redirect("sold_list")
+    return render(request, "lager/sold_confirm_delete.html", {"object": sold})

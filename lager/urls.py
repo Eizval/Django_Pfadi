@@ -19,4 +19,7 @@ urlpatterns = [
     path("borrows/<int:pk>/delete/", views.borrow_delete, name="borrow_delete"),
     path("pending/", views.pending_list, name="pending_list"),
     path("sold/", views.sold_list, name="sold_list"),
+    path("sold/new/", views.sold_create, name="sold_create"),
+    path("sold/<int:pk>/edit/", views.sold_edit, name="sold_edit"),
+    path("sold/<int:pk>/delete/", views.sold_delete, name="sold_delete"),
 ]
