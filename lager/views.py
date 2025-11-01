@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Item, Stock, Borrow, Pending, Sold
 from .decorators import role_or_superuser_required
-from .forms import ItemForm, StockForm, BorrowForm, SoldForm
+from .forms import ItemForm, StockForm, BorrowForm, SoldForm, PendingForm
 
 @login_required
 def lager_edit_view(request):
@@ -179,6 +179,40 @@ def borrow_delete(request, pk):
 def pending_list(request):
     pending_items = Pending.objects.all()
     return render(request, "lager/pending.html", {"objects": pending_items})
+
+@login_required
+@role_or_superuser_required(1)
+def pending_create(request):
+    if request.method == "POST":
+        form = PendingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("pending_list")
+    else:
+        form = PendingForm()
+    return render(request, "lager/pending_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def pending_edit(request, pk):
+    pending = get_object_or_404(Pending, pk=pk)
+    if request.method == "POST":
+        form = PendingForm(request.POST, instance=pending)
+        if form.is_valid():
+            form.save()
+            return redirect("pending_list")
+    else:
+        form = PendingForm(instance=pending)
+    return render(request, "lager/pending_form.html", {"form": form})
+
+@login_required
+@role_or_superuser_required(1)
+def pending_delete(request, pk):
+    pending = get_object_or_404(Pending, pk=pk)
+    if request.method == "POST":
+        pending.delete()
+        return redirect("pending_list")
+    return render(request, "lager/pending_confirm_delete.html", {"object": pending})
 
 @login_required
 @role_or_superuser_required(1)

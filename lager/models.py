@@ -60,6 +60,8 @@ class Pending(models.Model):
         ('pending', 'Ausstehend'),
         ('approved', 'Genehmigt'),
         ('rejected', 'Abgelehnt'),
+        ('cancelled', 'Storniert'),
+        ('sold', 'Verkauft'),
     ]
 
     item = models.ForeignKey('Item', on_delete=models.CASCADE, verbose_name="Artikel")

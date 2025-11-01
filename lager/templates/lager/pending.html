@@ -10,12 +10,7 @@
 
 {% block content %}
 <div class="stock-container">
-    <!DOCTYPE html>
-    <html lang="de">
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
+
     <table class="stock-table">
         <thead>
         <tr>
@@ -25,6 +20,7 @@
             <th>Status</th>
             <th>Anfrage-Datum</th>
             <th>Bemerkungen</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -36,6 +32,16 @@
             <td>{{ obj.get_status_display }}</td>
             <td>{{ obj.request_date|date:"d.m.Y H:i" }}</td>
             <td>{{ obj.notes }}</td>
+            <td>
+                <a href="{% url 'pending_edit' obj.pk %}">✎</a>
+                <form action="{% url 'pending_delete' obj.pk %}"
+                      method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('Willst du Bestellung wirklich löschen?');">
+                    {% csrf_token %}
+                    <button type="submit" style="background:transparent;border:none;color:red;">−</button>
+                </form>
+            </td>
         </tr>
         {% empty %}
         <tr>
@@ -44,7 +50,8 @@
         {% endfor %}
         </tbody>
     </table>
-    </body>
-    </html>
+    <div style="margin-top:10px;">
+        <a href="{% url 'pending_create' %}" style="font-size:2em;text-decoration:none;color:green;">+</a>
+    </div>
 </div>
 {% endblock %}
