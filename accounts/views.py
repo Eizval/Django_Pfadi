@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import user_passes_test, login_required
+from django.views.decorators.cache import cache_control
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import UserRegistrationForm, RoleForm
 from django.contrib import messages
@@ -11,8 +12,10 @@ User = get_user_model()
 
 
 # Create your views here.
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def login_view(request):
     # Wenn Formular gesendet wird
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
