@@ -4,7 +4,11 @@
 <header class="app-header">
     <div class="header-left">
         <!-- Zurück-Button -->
-        <a href="{% url 'lager_list' %}" class="back-btn">Zurück</a>
+        <a href="javascript:history.back()" class="back-btn">Zurück</a>
+        <a href="{% url 'lager_list' %}">Lager</a>
+        {% if user.is_superuser or user.is_staff %}
+        <a href="{% url 'admin:index' %}">Admin</a>
+        {% endif %}
     </div>
 
     <div class="header-center">

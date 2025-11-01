@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+{% include 'includes/header.html' with header_name='Hub' %}
+{% endblock %}
+
+{% block title %}Hub{% endblock %}
+
+{% block content %}
+
+<div class="hub">
+    <div class="account">
+        <p>Here should be something like account icon</p>
+    </div>
+
+    <div class="lager">
+        <a href="{% url 'lager_list' %}">Lager</a>
+    </div>
+    <div class="pfadi_lager">
+        <p>Hier kommt dan das lager</p>
+    </div>
+    <div class="notion">
+
+    </div>
+    <div class="me_data">
+
+    </div>
+    <div class="list_kids">
+
+    </div>
+</div>
+
+{% endblock %}

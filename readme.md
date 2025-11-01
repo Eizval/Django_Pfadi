@@ -5,42 +5,101 @@ from django.contrib.gis.geos.prototypes import cs_setx
 
 ## Structure
 ```python
-Django_Pfadi/ 
-│── accounts/ 
-│ ├── models.py 
-│ ├── views.py  
-│ ├── forms.py
-│ ├── urls.py 
-│ └── templates/accounts/ 
-│     ├── login.html 
-│     ├── register.html 
-│     └── approval_list.html 
-│ 
-│── lager/ 
-│ ├── models.py 
-│ ├── views.py 
-│ ├── urls.py 
-│ └── templates/lager/ 
-│     ├── lager_list.html 
-│     └── lager_edit.html 
+Django_Pfadi/
 │
-│── pfadfinder/
-│ ├── settings.py 
-│ ├── urls.py 
-│ ├── wsgi.py 
-│ └── asgi.py 
-│ 
-│── static
-│   └──css 
-│      └──styles.css
+├── accounts/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│   ├── migrations/
+│   └── templates/
+│       └── accounts/
+│           ├── add_role.html
+│           ├── allusers.html
+│           ├── approve.html
+│           ├── create_role.html
+│           ├── login.html
+│           ├── register.html
+│           └── role.html
 │
-│── templates/
-│   └──base.html
+├── lager/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── decorators.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│   ├── migrations/
+│   └── templates/
+│       └── lager/
+│           ├── borrow.html
+│           ├── borrow_form.html
+│           ├── item.html
+│           ├── item_form.html
+│           ├── lager_edit.html
+│           ├── lager_list.html
+│           ├── pending.html
+│           ├── pending_form.html
+│           ├── sold.html
+│           ├── sold_form.html
+│           ├── stock.html
+│           └── stock_form.html
 │
-│── manage.py
-│── db.sqlite3
-│── readme.md
-└── requirements.txt 
+├── pfadfinder/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+│
+├── static/
+│   ├── css/
+│   │   ├── admin_header.css
+│   │   ├── admin_header.css.map
+│   │   ├── credentials.css
+│   │   ├── credentials.css.map
+│   │   ├── header.css
+│   │   ├── header.css.map
+│   │   ├── stock.css
+│   │   ├── stock.css.map
+│   │   ├── styles.css
+│   │   └── styles.css.map
+│   ├── scss/
+│   │   ├── admin.scss
+│   │   ├── admin_header.scss
+│   │   ├── credentials.scss
+│   │   ├── header.scss
+│   │   ├── stock.scss
+│   │   └── styles.scss
+│
+├── staticfiles/
+│
+├── templates/
+│   ├── includes/
+│   │   ├── admin_header.html
+│   │   └── header.html
+│   ├── base.html
+│   └── home.html
+│
+├── node_modules/               (library root)
+├── db.sqlite3
+├── identifier.sqlite
+├── manage.py
+├── package.json
+├── package-lock.json
+├── Procfile
+├── readme.md
+└── requirements.txt
+
 ```
 
 ## Install all Packages
@@ -66,6 +125,7 @@ To update css you need to type this in the Terminal:
     npx sass static/scss/admin_header.scss static/css/admin_header.css
     npx sass static/scss/credentials.scss static/css/credentials.css
     npx sass static/scss/stock.scss static/css/stock.css
+    npx sass static/scss/pfadi.scss static/css/pfadi.css
 ```
 ## Database
 For you to see the Database open the Database icon on the right side of the Screen (PyCharm). Press on the top left the + and select Datasource. 

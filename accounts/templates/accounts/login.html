@@ -36,4 +36,10 @@
 </div>
 
 {% endif %}
+
+{% if user.is_authenticated %}
+<script>
+    window.location.href = "{% url 'lager_list' %}";
+</script>
+{% endif %}
 {% endblock %}
