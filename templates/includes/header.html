@@ -5,10 +5,21 @@
     <div class="header-left">
         <!-- Zurück-Button -->
         <a href="javascript:history.back()" class="back-btn">Zurück</a>
-        <a href="{% url 'lager_list' %}">Lager</a>
+        <a href="{% url 'lager_list' %}">
+            <img src="{% static 'img/lagerico.png' %}" alt="Lager Icon">
+        </a>
         {% if user.is_superuser or user.is_staff %}
         <a href="{% url 'admin:index' %}">Admin</a>
         {% endif %}
+        <a href="https://www.notion.so/24c7bc50ffa380f6b49ef28deb653bca?v=24c7bc50ffa38145b34e000cb8bb031b" target="_blank">
+            <img class="logo-invert" src="{% static 'img/Notion-logo.svg.png' %}" alt="Notion logo">
+        </a>
+        <a href="https://db.scout.ch" target="_blank">
+            <img class="logo-invert" src="{% static 'img/midate.png' %}" alt="Midata logo">
+        </a>
+        <a href="">
+            <img src="{% static 'img/children_icon.jpg' %}" alt="Children Icon">
+        </a>
     </div>
 
     <div class="header-center">
