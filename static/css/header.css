@@ -66,6 +66,15 @@
   align-items: center;
   gap: 1rem;
 }
+.app-header .header-right img {
+  width: 30px;
+  height: auto;
+  margin-left: 0.15rem;
+  transition: filter 0.25s ease;
+}
+.app-header .header-right img:hover {
+  filter: brightness(0) invert(0.8);
+}
 .app-header .header-right .username {
   font-weight: 500;
   font-size: 0.95rem;

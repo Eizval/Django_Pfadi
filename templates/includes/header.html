@@ -27,6 +27,9 @@
     </div>
 
     <div class="header-right">
+        <a href="{% url 'hub' %}">
+            <img src="{% static 'img/hub.png' %}" alt="Hub">
+        </a>
         {% if user.is_authenticated %}
         <span class="username">Eingeloggt als, <span class="username-highlight">{{ user.username }}</span></span>
         <form action="{% url 'logout' %}" method="post" class="logout-form">
