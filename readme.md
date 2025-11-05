@@ -106,7 +106,7 @@ Django_Pfadi/
 Open Terminal and enter:
 ```python
     pip install -r requirements.txt
-    
+    npm install
 ```
 
 ## Start server
