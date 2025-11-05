@@ -1,3 +1,33 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #181818;
+  background-color: #b46521;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  margin: 3rem auto;
+  width: 60%;
+  background: #c4a05a;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(24, 24, 24, 0.08);
+  padding: 2.5rem 2rem;
+  /* optional: add border for extra definition */
+  border: 1.5px solid rgb(184.3727678571, 144.1459821429, 65.9272321429);
+}
+.content > * {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.content > * {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 h1, h2, h3, p {
   text-align: center;
   color: black;
@@ -5,20 +35,7 @@ h1, h2, h3, p {
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   letter-spacing: 0.015em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-.content {
-  margin: 3rem auto;
-  width: 60%;
-}
-
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #181818;
-  background-color: #faf3e3;
-  line-height: 1.6;
-  padding: 0 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
 }
 
 a {
@@ -95,6 +112,9 @@ a:hover {
 }
 .info .info-box a:hover {
   color: #181818;
+}
+.info .info-box i {
+  font-size: 200%;
 }
 @media (max-width: 1024px) {
   .info {
@@ -202,27 +222,6 @@ form input[type=submit]:hover {
   box-shadow: 0 4px 12px #b46521;
 }
 
-.footer {
-  background: #181818;
-  color: #fcbf49;
-  text-align: center;
-  padding: 1.5rem 0;
-  margin-top: 3rem;
-  border-top: 3px solid #fcbf49;
-}
-.footer p {
-  font-size: 0.97rem;
-  color: #ffe16b;
-}
-.footer a {
-  color: #b46521;
-  margin: 0 0.8rem;
-  text-decoration: none;
-}
-.footer a:hover {
-  color: #fcbf49;
-}
-
 @media (max-width: 768px) {
   .header h1 {
     font-size: 1.4rem;
@@ -238,7 +237,7 @@ form input[type=submit]:hover {
 .partner {
   background: #384d2b;
   text-align: center;
-  margin: 3rem auto;
+  margin: 3rem auto 0 auto;
   color: #fcbf49;
   padding: 2rem 1rem;
 }
@@ -265,6 +264,27 @@ form input[type=submit]:hover {
 .partner .partner-logos img:hover {
   transform: scale(1.07) rotate(-3deg);
   box-shadow: 0 4px 12px #b46521;
+}
+
+.footer {
+  background: #181818;
+  color: #fcbf49;
+  text-align: center;
+  padding: 1.5rem 0;
+  margin: 0;
+  border-top: 3px solid #fcbf49;
+}
+.footer p {
+  font-size: 0.97rem;
+  color: #ffe16b;
+}
+.footer a {
+  color: #b46521;
+  margin: 0 0.8rem;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #fcbf49;
 }
 
 /*# sourceMappingURL=pfadi.css.map */

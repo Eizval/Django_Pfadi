@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Eizval/Django_Pfadi#readme",
   "devDependencies": {
     "sass": "^1.93.2"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1"
   }
 }
