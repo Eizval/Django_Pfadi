@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-qi=y2b8ur9oxmco$pyi*apfl&5)3sdyiskg0vxabq-j261((3g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = [os.getenv('RENDER_EXTERNAL_HOSTNAME')]
+CSRF_TRUSTED_ORIGINS = [f"https://{os.getenv('RENDER_EXTERNAL_HOSTNAME')}"]
 
 # Application definition
 
