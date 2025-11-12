@@ -1,60 +1,100 @@
-// Main Colors - Autumn
-$primary: #181818; // Black for strong contrast
-$accent: #fcbf49; // Warm golden yellow
-$leaf: #b46521; // Burnt orange (for small details)
-$forest: #384d2b; // Deep moss green
-$light-bg: #faf3e3; // Muted creamy beige
-$dark-text: #181818;
-$link-color: #e9bb1b; // Autumn gold
-$background-content: #c4a05a;
+// Main Colors - Scout/Adventure Theme (Focused & High Contrast)
+$primary: #4A3A2F; // Dark Brown (Main Dark Color, Leather)
+$secondary: #C55C00; // Burnt Orange (Accent, Campfire)
+$accent: #FFC300; // Bright Yellow (Highlight, Badge/Map)
+$background: #FDF5E6; // Parchment/Cream (Light BG)
+$content-bg: #E8D8B6; // Muted Khaki/Tan (Content Background)
+$dark-text: #2c2c2c; // Near Black for text
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Georgia', serif; /* Use a classic font for a rustic feel */
   color: $dark-text;
-  background-color: #b46521; // Outer background
+  background-color: $primary; /* Dark leather background */
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-// Content container with spacing from outer background
+/* --- Content Container --- */
 .content {
-  margin: 3rem auto; // center on page
-  width: 60%;
-  background: $background-content;
-  border-radius: 18px; // rounded corners for softness
-  box-shadow: 0 4px 32px rgba($primary, 0.08); // soft shadow for lift
-  padding: 2.5rem 2rem; // extra space inside
-  /* optional: add border for extra definition */
-  border: 1.5px solid darken($background-content, 7%);
+  margin: 4rem auto;
+  width: 90%;
+  max-width: 1000px;
+  background: $content-bg; /* Khaki/Tan background */
+  border-radius: 12px;
+  box-shadow: 0 10px 45px rgba($primary, 0.5); /* Strong shadow */
+  padding: 3rem 2rem;
+  border: 4px solid $secondary; /* Accent border */
 
   & > * {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }
 
-// Ensure children use full width available
-.content > * {
-  width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-// Example for global text alignment and visibility
-h1, h2, h3, p {
+/* --- Typography --- */
+h1, h2, h3 {
   text-align: center;
-  color: darken($dark-text, 15%);
-  font-weight: 600;
-  line-height: 1.5;
-  text-rendering: optimizeLegibility;
-  letter-spacing: 0.015em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
-// Links
+h2 {
+  font-size: 2.2rem;
+  color: $primary; /* Dark brown for section headings */
+  padding-top: 0.5rem;
+
+  /* ENFORCED CENTERING FIX & Styling */
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 1.5rem auto;
+  border-bottom: 3px solid $accent; /* Yellow underline */
+  padding-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+
+h3 {
+  color: $secondary; /* Burnt orange for subheadings */
+}
+
+/* --- Paragraph Centering and Width FIX (Default) --- */
+p {
+  color: $dark-text;
+  font-weight: 500;
+  line-height: 1.8;
+
+  /* FIX: Center and restrict width for readability */
+  text-align: center;
+  width: 95%; /* Start wide for small screens */
+  margin: 0.5rem auto;
+}
+@media (min-width: 768px) {
+  p {
+    width: 65%; /* Wider on tablet */
+  }
+}
+@media (min-width: 1024px) {
+  p {
+    width: 40%; /* 40% width on large screens (Default) */
+  }
+}
+
+/* --- Paragraph Overrides for .start class --- */
+@media (min-width: 768px) {
+  .start p {
+    width: 65%; /* Match default on tablet */
+  }
+}
+@media (min-width: 1024px) {
+  .start p {
+    width: 60%; /* User requested 60% for .start p on large screens */
+  }
+}
+
+/* --- Links --- */
 a {
-  color: $link-color;
+  color: $secondary;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
@@ -65,277 +105,276 @@ a {
   }
 }
 
-// Header
+/* --- Header --- */
 .header {
   text-align: center;
-  background: linear-gradient(135deg, $primary 80%, $forest);
+  background: $primary;
   color: $accent;
-  padding: 2rem 1rem;
-  border-bottom: 4px solid $accent;
+  padding: 3rem 1rem 1.5rem 1rem; /* More padding top */
+  border-bottom: 6px double $accent; /* Double line border */
 
   h1 {
     margin-top: 1rem;
-    font-size: 2.2rem;
-    letter-spacing: 2px;
+    font-size: 3rem;
+    letter-spacing: 4px;
     color: $accent;
-    text-shadow: 0 2px 10px rgba($primary, 0.25);
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    font-weight: 900;
+    text-transform: uppercase;
   }
 
   a {
-    margin: 0 0.8rem;
+    margin: 0 1rem;
     color: $accent;
     font-weight: 700;
 
     &:hover {
-      color: $leaf;
+      color: $secondary;
+    }
+  }
+
+  /* --- FIX: Social Media Icons --- */
+  a img {
+    display: inline-block;
+    width: 90px; /* Set a small size */
+    height: 90px;
+    margin: 0 0 0.5rem 0; /* Remove default margins and adjust spacing */
+    border: none; /* REMOVE yellow border */
+    box-shadow: none; /* Remove any shadows */
+    transition: transform 0.3s ease;
+    object-fit: contain; /* Ensure the icon scales correctly */
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
 
-// Info section: all boxes in one row on large screens, centered text inside
+/* --- Images (Global Style) --- */
+img {
+  display: block;
+  margin: 2.5rem auto;
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba($dark-text, 0.1);
+  border: 4px solid $accent; /* The yellow frame for general images */
+  object-fit: cover;
+}
+
+/* --- Form Styling --- */
+.contact {
+  h2 {
+    margin-bottom: 2rem;
+  }
+}
+.contact-info {
+  text-align: center;
+  p {
+    text-align: center;
+    width: 60%;
+    font-size: 1.1rem;
+  }
+}
+
+form {
+  max-width: 550px;
+  margin: 2rem auto;
+  background: $background;
+  padding: 2.5rem;
+  border-radius: 10px;
+  border: 2px solid $primary;
+  box-shadow: 0 5px 15px rgba($primary, 0.15);
+
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 700;
+    color: $secondary;
+    text-align: left;
+  }
+
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 1px solid $content-bg;
+    border-radius: 4px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  input[type="submit"] {
+    margin-top: 2.5rem;
+    background: $secondary;
+    color: $background;
+    padding: 0.9rem 2.5rem;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+
+    &:hover {
+      background: $primary;
+      box-shadow: 0 2px 10px rgba($secondary, 0.8);
+    }
+  }
+}
+
+/* --- Info Boxes (3-Column Layout) --- */
 .info {
   display: flex;
-  flex-wrap: nowrap; // Prevent wrapping on large screens
-  justify-content: center; // Center horizontally
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: stretch;
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 3rem 0;
 
   .info-box {
-    flex: 1 1 0; // Equal width
-    max-width: 370px;
-    min-width: 240px;
-    background: linear-gradient(120deg, $accent 40%, $light-bg 130%);
-    border: 2px solid $primary;
-    color: $dark-text;
-    box-shadow: 0 2px 12px rgba($primary, 0.07);
+    flex: 1 1 300px;
+    max-width: 350px;
+    background: $background;
+    border: 1px solid $secondary;
+    box-shadow: 0 4px 15px rgba($primary, 0.1);
     border-radius: 8px;
     padding: 1.5rem;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba($primary, 0.13);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba($primary, 0.2);
+      border-color: $accent;
     }
 
     h3 {
       color: $primary;
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
     }
 
     p {
-      margin-bottom: 1rem;
-      line-height: 1.5;
-      text-align: center; // Ensure paragraphs inside boxes are centered
+      text-align: center;
+      width: auto;
     }
 
-    a {
-      color: $leaf;
-      font-weight: 600;
-
-      &:hover {
-        color: $primary;
-      }
-    }
     i {
-      font-size: 200%;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    flex-wrap: wrap; // Allow wrapping on medium screens
-    .info-box {
-      min-width: 260px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column; // Stack vertically on small devices
-    align-items: center;
-
-    .info-box {
-      width: 90%;
-      max-width: 100%;
-      margin-bottom: 1rem;
+      font-size: 250%;
+      display: block;
+      margin-top: 1rem;
+      color: $secondary;
     }
   }
 }
 
-// Images
-img {
-  display: block;
-  margin: 1.5rem auto;
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba($primary, 0.18);
-  border: 2px solid $accent;
-}
-
-// Gallery
-.galary {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.2rem;
-  padding: 1rem;
-
-  img {
-    width: 240px;
-    height: 170px;
-    object-fit: cover;
-    border: 2px solid $accent;
-    box-shadow: 0 2px 7px rgba($primary, 0.13);
-  }
-}
-
-// Form
-form {
-  max-width: 600px;
-  margin: 2rem auto;
-  background: $light-bg;
-  padding: 2rem;
-  border-radius: 10px;
-  border: 2px solid $forest;
-  box-shadow: 0 2px 8px rgba($primary, 0.08);
-
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 600;
-    color: $leaf;
-  }
-
-  input[type="text"], input[type="email"] {
-    width: 100%;
-    padding: 0.6rem;
-    margin-top: 0.3rem;
-    border: 1.3px solid $accent;
-    border-radius: 4px;
-    background: #fff9ec;
-  }
-
-  input[type="submit"] {
-    margin-top: 1.5rem;
-    background: $accent;
-    color: $primary;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-
-    &:hover {
-      background: $leaf;
-      color: #fffbe7;
-    }
-  }
-}
-
-// Partner Area
+/* --- Partner Area --- */
 .partner {
-  background: $forest;
+  background: $primary;
   text-align: center;
-  margin-top: 3rem;
+  margin: 4rem auto 0 auto;
   color: $accent;
+  padding: 3rem 1rem;
 
   h2 {
     color: $accent;
-    margin-bottom: 0.5rem;
+    border-color: $accent;
+    margin-bottom: 2.5rem;
   }
 
   p {
-    color: #fffbe7;
-    margin-bottom: 1.5rem;
-  }
-
-  .partner-logos img {
-    width: 160px;
-    border: 2px solid $accent;
-    transition: transform 0.2s, box-shadow 0.2s;
-
-    &:hover {
-      transform: scale(1.07) rotate(-3deg);
-      box-shadow: 0 4px 12px $leaf;
-    }
-  }
-}
-
-// Responsiveness
-@media (max-width: 768px) {
-  .header h1 {
-    font-size: 1.4rem;
-  }
-
-  .galary img {
-    width: 80vw;
-    height: auto;
-  }
-
-  form {
-    padding: 1rem;
-  }
-}
-
-// Partner section centered with limited max width and no bottom margin
-.partner {
-  background: $forest;
-  text-align: center;
-  margin: 3rem auto 0 auto; // no bottom margin to remove white space below
-  color: $accent;
-  padding: 2rem 1rem;
-
-  h2 {
-    color: $accent;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    color: #fffbe7;
-    margin-bottom: 1.5rem;
+    color: $background;
+    margin-bottom: 2rem;
+    width: 80%;
   }
 
   .partner-logos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    flex-wrap: nowrap;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
   }
 
   .partner-logos img {
-    width: 160px;
-    border: 2px solid $accent;
-    transition: transform 0.2s, box-shadow 0.2s;
+    width: 150px;
+    height: auto;
+    background-color: #e8d8b6;
+    padding: 1rem;
+    border: 3px solid $accent;
+    border-radius: 15px;
+    transition: transform 0.4s, box-shadow 0.4s;
+    margin: 0;
 
     &:hover {
-      transform: scale(1.07) rotate(-3deg);
-      box-shadow: 0 4px 12px $leaf;
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 0 0 5px $secondary;
     }
   }
 }
 
-// Footer flush with partner (no top margin)
+/* --- Footer --- */
 .footer {
-  background: $primary;
-  color: $accent;
+  background: #2c2c2c;
+  color: $background;
   text-align: center;
   padding: 1.5rem 0;
-  margin: 0; // Remove top margin to avoid white space
+  margin: 0;
   border-top: 3px solid $accent;
 
   p {
-    font-size: 0.97rem;
-    color: #ffe16b;
+    font-size: 0.9rem;
+    color: $content-bg;
+    margin: 0.5rem auto;
   }
 
   a {
-    color: $leaf;
+    color: $secondary;
     margin: 0 0.8rem;
     text-decoration: none;
 
     &:hover {
       color: $accent;
     }
+  }
+}
+
+/* --- Media Queries --- */
+@media (max-width: 1024px) {
+  .content {
+    width: 90%;
+    padding: 2rem 1.5rem;
+  }
+  .partner-logos {
+    gap: 2rem;
+  }
+  .partner-logos img {
+    width: 120px;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin: 2rem auto;
+  }
+  .header h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin: 1.5rem auto 1rem auto;
+  }
+  /* Ensure paragraph width is appropriate for small screens */
+  p {
+    width: 90%;
+  }
+  .info-box {
+      flex: 1 1 100%;
+      max-width: 100%;
   }
 }
