@@ -1,0 +1,34 @@
+{% extends "pfadibase.html" %}
+{% load static %}
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profiles.css' %}">
+{% endblock %}
+
+<div class="profiles-container">
+    <h1>{{ mode }} Profile</h1>
+    <form method="post" class="profile-form">
+        {% csrf_token %}
+        <div class="form-grid">
+            {{ form.non_field_errors }}
+            <label>Name {{ form.name }}</label>
+            <label>Second name {{ form.second_name }}</label>
+            <label>Last name {{ form.last_name }}</label>
+            <label>Pfadi name {{ form.pfadi_name }}</label>
+            <label>Email {{ form.email }}</label>
+            <label>Phone number {{ form.phone_number }}</label>
+            <label>Level {{ form.level }}</label>
+            <label>User {{ form.user }}</label>
+            <label>Image URL {{ form.img }}</label>
+            <label>Visible {{ form.visible }}</label>
+            <label>Documents {{ form.documents_text }}</label>
+            <small class="help">{{ form.fields.documents_text.help_text }}</small>
+        </div>
+        <div class="actions">
+            <button class="btn" type="submit">Save</button>
+            <a class="btn" href="{% url 'profiles' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

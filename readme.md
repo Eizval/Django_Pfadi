@@ -1,10 +1,8 @@
-from django.contrib.gis.geos.prototypes import cs_setx
-
 # Pfadfinder Project
 
 
 ## Structure
-```python
+```text
 Django_Pfadi/
 │
 ├── accounts/
@@ -53,6 +51,16 @@ Django_Pfadi/
 │           ├── stock.html
 │           └── stock_form.html
 │
+├── profiles/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   ├── views.py
+│   └── migrations/
+│
 ├── pfadfinder/
 │   ├── __init__.py
 │   ├── asgi.py
@@ -64,33 +72,40 @@ Django_Pfadi/
 ├── static/
 │   ├── css/
 │   │   ├── admin_header.css
-│   │   ├── admin_header.css.map
 │   │   ├── credentials.css
-│   │   ├── credentials.css.map
 │   │   ├── header.css
-│   │   ├── header.css.map
+│   │   ├── pfadi.css
+│   │   ├── profiles.css
 │   │   ├── stock.css
-│   │   ├── stock.css.map
-│   │   ├── styles.css
-│   │   └── styles.css.map
+│   │   └── styles.css
+│   ├── img/
 │   ├── scss/
 │   │   ├── admin.scss
 │   │   ├── admin_header.scss
 │   │   ├── credentials.scss
 │   │   ├── header.scss
+│   │   ├── pfadi.scss
+│   │   ├── profiles.scss
 │   │   ├── stock.scss
 │   │   └── styles.scss
-│
-├── staticfiles/
 │
 ├── templates/
 │   ├── includes/
 │   │   ├── admin_header.html
 │   │   └── header.html
+│   ├── admin/
+│   ├── pfadibase.html
 │   ├── base.html
-│   └── home.html
+│   ├── hub.html
+│   ├── home.html
+│   └── profiles/
+│       ├── list.html
+│       ├── form.html
+│       └── confirm_delete.html
 │
-├── node_modules/               (library root)
+├── staticfiles/
+│
+├── node_modules/
 ├── db.sqlite3
 ├── identifier.sqlite
 ├── manage.py
@@ -126,20 +141,21 @@ To update css you need to type this in the Terminal:
     npx sass static/scss/credentials.scss static/css/credentials.css
     npx sass static/scss/stock.scss static/css/stock.css
     npx sass static/scss/pfadi.scss static/css/pfadi.css
+    npx sass static/scss/profiles.scss static/css/profiles.css
 ```
 ## Database
 For you to see the Database open the Database icon on the right side of the Screen (PyCharm). Press on the top left the + and select Datasource. 
 Then search for SQLite, it opens a new Window where in the middle you can see File: press the 3 Dots on the right and open the db.sqlite3 from this 
 Project then you should be able to see it.
 
-## Update Databae
+## Update Database
 If you have changed something in the models.py use these 2 commands in the Terminal to update the Database
 ```python
     python manage.py makemigrations
     python manage.py migrate
 ```
 
-# Delete User in Databse
+# Delete User in Database
 To delete a Single user, put in terminal:
 ```python
     python manage.py shell

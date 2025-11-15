@@ -1,0 +1,18 @@
+{% extends "pfadibase.html" %}
+{% load static %}
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profiles.css' %}">
+{% endblock %}
+
+<div class="profiles-container">
+    <h1>Delete Profile</h1>
+    <p>Are you sure you want to delete <strong>{{ profile.full_name }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn danger" type="submit">Yes, delete</button>
+        <a class="btn" href="{% url 'profiles' %}">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

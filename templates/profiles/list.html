@@ -1,0 +1,80 @@
+{% extends "pfadibase.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profiles.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="profiles-container">
+    <div class="profiles-header">
+        <h1>Profiles</h1>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'profile_add' %}" class="btn add-btn">Add</a>
+        {% endif %}
+    </div>
+
+    <form method="get" class="filters">
+        <div class="filter">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{ filters.name }}" placeholder="Search name">
+        </div>
+        <div class="filter">
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" value="{{ filters.phone }}" placeholder="Search phone">
+        </div>
+        <div class="filter">
+            <label for="lvl">Level</label>
+            <select id="lvl" name="lvl">
+                <option value="">All Levels</option>
+                {% for lvl in levels %}
+                    <option value="{{ lvl.id }}" {% if selected_level_id and selected_level_id == lvl.id %}selected{% endif %}>
+                        {{ lvl.level }}{% if lvl.second_level %} - {{ lvl.second_level }}{% endif %}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter actions">
+            <button type="submit" class="btn">Filter</button>
+        </div>
+    </form>
+
+    <div class="profiles-grid">
+        {% for p in profiles %}
+            <div class="profile-card">
+                <div class="profile-img">
+                    {% if p.img %}
+                        <img src="{{ p.img }}" alt="{{ p.full_name }}">
+                    {% else %}
+                        <div class="img-placeholder"><i class="bi bi-person"></i></div>
+                    {% endif %}
+                </div>
+                <div class="profile-info">
+                    <div class="name">{{ p.full_name }}</div>
+                    {% if p.pfadi_name %}
+                        <div class="pfadi-name">{{ p.pfadi_name }}</div>
+                    {% endif %}
+                    <div class="level">
+                        {{ p.level.level }}{% if p.level.second_level %} - {{ p.level.second_level }}{% endif %}
+                    </div>
+                    {% if p.documents %}
+                        <div class="documents">
+                            {% for url in p.documents %}
+                                <a href="{{ url }}" target="_blank" rel="noopener" class="doc-link">Document {{ forloop.counter }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <div class="actions">
+                            <a class="btn" href="{% url 'profile_edit' p.id %}">Edit</a>
+                            <a class="btn danger" href="{% url 'profile_delete' p.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <p>No profiles found.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
