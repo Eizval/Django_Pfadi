@@ -1,0 +1,26 @@
+[33m1318a13[m[33m ([m[1;36mHEAD -> [m[1;32medit_homepage[m[33m)[m HEAD@{0}: checkout: moving from sub_main to edit_homepage
+[33m554a6bb[m[33m ([m[1;31morigin/sub_main[m[33m, [m[1;32msub_main[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33m554a6bb[m[33m ([m[1;31morigin/sub_main[m[33m, [m[1;32msub_main[m[33m)[m HEAD@{2}: reset: moving to HEAD
+[33m554a6bb[m[33m ([m[1;31morigin/sub_main[m[33m, [m[1;32msub_main[m[33m)[m HEAD@{3}: reset: moving to HEAD
+[33m554a6bb[m[33m ([m[1;31morigin/sub_main[m[33m, [m[1;32msub_main[m[33m)[m HEAD@{4}: checkout: moving from finetuning to sub_main
+[33m6fb48ad[m[33m ([m[1;31morigin/finetuning[m[33m, [m[1;32mfinetuning[m[33m)[m HEAD@{5}: checkout: moving from sub_main to finetuning
+[33m554a6bb[m[33m ([m[1;31morigin/sub_main[m[33m, [m[1;32msub_main[m[33m)[m HEAD@{6}: checkout: moving from sub_main to sub_main
+[33m554a6bb[m[33m ([m[1;31morigin/sub_main[m[33m, [m[1;32msub_main[m[33m)[m HEAD@{7}: checkout: moving from edit_homepage to sub_main
+[33m1318a13[m[33m ([m[1;36mHEAD -> [m[1;32medit_homepage[m[33m)[m HEAD@{8}: commit: Changed scss
+[33ma50a733[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{9}: checkout: moving from finetuning to edit_homepage
+[33m6fb48ad[m[33m ([m[1;31morigin/finetuning[m[33m, [m[1;32mfinetuning[m[33m)[m HEAD@{10}: commit: Small change
+[33m31f42b7[m HEAD@{11}: commit: Improved the header
+[33m8ff471b[m HEAD@{12}: commit: Some touches
+[33m4586254[m HEAD@{13}: commit: Added all links and text from original website
+[33m1ca1434[m[33m ([m[1;32mmain[m[33m)[m HEAD@{14}: checkout: moving from main to finetuning
+[33m1ca1434[m[33m ([m[1;32mmain[m[33m)[m HEAD@{15}: pull: Fast-forward
+[33m1eed9c4[m HEAD@{16}: checkout: moving from starting_over_register to main
+[33mab5935a[m[33m ([m[1;31morigin/starting_over_register[m[33m, [m[1;32mstarting_over_register[m[33m)[m HEAD@{17}: commit (merge): Resolved conflicts maybe it works
+[33m0685a5f[m HEAD@{18}: reset: moving to HEAD
+[33m0685a5f[m HEAD@{19}: commit: Lager is done
+[33m945895c[m HEAD@{20}: commit: Sold page is working
+[33mc53e773[m HEAD@{21}: reset: moving to HEAD
+[33mc53e773[m HEAD@{22}: pull: Fast-forward
+[33m2690ace[m HEAD@{23}: reset: moving to HEAD
+[33m2690ace[m HEAD@{24}: checkout: moving from main to starting_over_register
+[33m1eed9c4[m HEAD@{25}: clone: from https://github.com/Eizval/Django_Pfadi.git
