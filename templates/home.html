@@ -49,7 +49,8 @@
         hier in der
         <a href="https://www.pfadibrig.ch/_files/ugd/ad573b_0907837b05c144ca820ba3bf391bcb16.pdf" target="_blank">90-Jahre-Broschüre</a>.
     </p>
-    <img src="{% static 'img/IMG_4568_JPG.jpg' %}" alt="Red">
+    <a href="{% url 'hub' %}"><img src="{% static 'img/IMG_4568_JPG.jpg' %}" alt="Red"></a>
+
     <h2>Witeri Infos</h2>
     <div class="info">
 
@@ -127,9 +128,13 @@
     <p>Die Pfadi Brig wird von folgenden Partnern regelmässig unterstützt. Vielen Dank!</p>
 
     <div class="partner-logos">
-        <img src="{% static 'img/sport.avif' %}" alt="Sport Kommission Brig-Glis">
+        <a href="https://www.brig-glis.ch/freizeit-tourismus/sport/sportfoerderungen/" target="_blank">
+            <img src="{% static 'img/sport.avif' %}" alt="Sport Kommission Brig-Glis">
+        </a>
         <img src="{% static 'img/red.avif' %}" alt="Red">
-        <img src="{% static 'img/schwestermann.avif' %}" alt="Schwestermann logo">
+        <a href="https://www.schwestermann-kuechen.ch/" target="_blank">
+            <img src="{% static 'img/schwestermann.avif' %}" alt="Schwestermann logo">
+        </a>
     </div>
 </div>
 
