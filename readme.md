@@ -106,9 +106,9 @@ Django_Pfadi/
 Open Terminal and enter:
 ```python
     pip install -r requirements.txt
-    
+    npm install
 ```
-
+Install https://nodejs.org/en/download if npm install doesnt work
 ## Start server
 Open Terminal and type in:
 ```python
