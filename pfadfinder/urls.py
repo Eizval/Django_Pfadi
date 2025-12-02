@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('lager.urls')),
     path("hub/", views.hub_view, name='hub'),
     path("", views.home_view, name="home"),
+    path('contact/', views.contact_form_view, name='contact_view_name'),
 ]

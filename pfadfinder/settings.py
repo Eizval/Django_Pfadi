@@ -28,6 +28,15 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST_CYON', 'smtp.gmail.com')  # Later the one from CYON
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))  # 587 for TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') # I'll need an environment variable for in running environment!
+
+
 # Application definition
 
 INSTALLED_APPS = [
