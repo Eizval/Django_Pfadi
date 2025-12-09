@@ -1,10 +1,17 @@
 // Main Colors - Scout/Adventure Theme (Focused & High Contrast)
-$primary: #F2CB05; // Dark Brown (Main Dark Color, Leather)
-$secondary: #C55C00; // Burnt Orange (Accent, Campfire)
-$accent: #FFC300; // Bright Yellow (Highlight, Badge/Map)
-$background: #F28705; // Darker Orange (Light BG)
-$content-bg: #F29F05; // Orange (Content Background)
-$dark-text: #2c2c2c; // Near Black for text
+$primary: #F5F5DC;
+$primary-dark: #837569;
+$primary-text: #979C84;
+$primary-text-dark: $primary-dark;
+$secondary: #C55C00;
+$accent: Black;
+$background: #FEF9F3;
+$content-bg: #F9F8F0;
+$dark-text: #2c2c2c;
+$header: $dark-text;
+$header2: $dark-text;
+$header-text: #846C5B;
+$form-background: #F5ECCD;
 
 body {
   font-family: 'Georgia', serif; /* Use a classic font for a rustic feel */
@@ -42,7 +49,7 @@ h1, h2, h3 {
 
 h2 {
   font-size: 2.2rem;
-  color: $primary; /* Dark brown for section headings */
+  color: $primary-text;
   padding-top: 0.5rem;
 
   /* ENFORCED CENTERING FIX & Styling */
@@ -108,8 +115,7 @@ a {
 /* --- Header --- */
 .header {
   text-align: center;
-  background: $primary;
-  color: $accent;
+  background: linear-gradient(100deg, $header, $header2);
   padding: 3rem 1rem 1.5rem 1rem; /* More padding top */
   border-bottom: 6px double $accent; /* Double line border */
 
@@ -117,7 +123,7 @@ a {
     margin-top: 1rem;
     font-size: 3rem;
     letter-spacing: 4px;
-    color: $accent;
+    color: $header-text;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
     font-weight: 900;
     text-transform: uppercase;
@@ -179,7 +185,7 @@ img {
 form {
   max-width: 550px;
   margin: 2rem auto;
-  background: $background;
+  background: $form-background;
   padding: 2.5rem;
   border-radius: 10px;
   border: 2px solid $primary;
@@ -236,7 +242,7 @@ form {
   .info-box {
     flex: 1 1 300px;
     max-width: 350px;
-    background: $background;
+    background: $form-background;
     border: 1px solid $secondary;
     box-shadow: 0 4px 15px rgba($primary, 0.1);
     border-radius: 8px;
@@ -251,7 +257,7 @@ form {
     }
 
     h3 {
-      color: $primary;
+      color: $primary-text;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
     }
@@ -285,7 +291,7 @@ form {
   }
 
   p {
-    color: $background;
+    color: $primary-text;
     margin-bottom: 2rem;
     width: 80%;
   }
@@ -319,7 +325,7 @@ form {
 /* --- Footer --- */
 .footer {
   background: #2c2c2c;
-  color: $background;
+  color: $primary-text;
   text-align: center;
   padding: 1.5rem 0;
   margin: 0;

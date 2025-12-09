@@ -1,7 +1,7 @@
 body {
   font-family: "Georgia", serif; /* Use a classic font for a rustic feel */
   color: #2c2c2c;
-  background-color: #4A3A2F; /* Dark leather background */
+  background-color: #F5F5DC; /* Dark leather background */
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -13,9 +13,9 @@ body {
   margin: 4rem auto;
   width: 90%;
   max-width: 1000px;
-  background: #E8D8B6; /* Khaki/Tan background */
+  background: #F9F8F0; /* Khaki/Tan background */
   border-radius: 12px;
-  box-shadow: 0 10px 45px rgba(74, 58, 47, 0.5); /* Strong shadow */
+  box-shadow: 0 10px 45px rgba(245, 245, 220, 0.5); /* Strong shadow */
   padding: 3rem 2rem;
   border: 4px solid #C55C00; /* Accent border */
 }
@@ -33,13 +33,13 @@ h1, h2, h3 {
 
 h2 {
   font-size: 2.2rem;
-  color: #4A3A2F; /* Dark brown for section headings */
+  color: #979C84;
   padding-top: 0.5rem;
   /* ENFORCED CENTERING FIX & Styling */
   display: block;
   width: fit-content;
   margin: 2rem auto 1.5rem auto;
-  border-bottom: 3px solid #FFC300; /* Yellow underline */
+  border-bottom: 3px solid Black; /* Yellow underline */
   padding-bottom: 0.3rem;
   letter-spacing: 1px;
 }
@@ -88,30 +88,29 @@ a {
   transition: color 0.3s;
 }
 a:hover {
-  color: #FFC300;
+  color: Black;
   text-decoration: underline;
 }
 
 /* --- Header --- */
 .header {
   text-align: center;
-  background: #4A3A2F;
-  color: #FFC300;
+  background: linear-gradient(100deg, #2c2c2c, #2c2c2c);
   padding: 3rem 1rem 1.5rem 1rem; /* More padding top */
-  border-bottom: 6px double #FFC300; /* Double line border */
+  border-bottom: 6px double Black; /* Double line border */
 }
 .header h1 {
   margin-top: 1rem;
   font-size: 3rem;
   letter-spacing: 4px;
-  color: #FFC300;
+  color: #846C5B;
   text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
   font-weight: 900;
   text-transform: uppercase;
 }
 .header a {
   margin: 0 1rem;
-  color: #FFC300;
+  color: Black;
   font-weight: 700;
 }
 .header a:hover {
@@ -141,7 +140,7 @@ img {
   max-width: 100%;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(44, 44, 44, 0.1);
-  border: 4px solid #FFC300; /* The yellow frame for general images */
+  border: 4px solid Black; /* The yellow frame for general images */
   object-fit: cover;
 }
 
@@ -162,11 +161,11 @@ img {
 form {
   max-width: 550px;
   margin: 2rem auto;
-  background: #FDF5E6;
+  background: #F5ECCD;
   padding: 2.5rem;
   border-radius: 10px;
-  border: 2px solid #4A3A2F;
-  box-shadow: 0 5px 15px rgba(74, 58, 47, 0.15);
+  border: 2px solid #F5F5DC;
+  box-shadow: 0 5px 15px rgba(245, 245, 220, 0.15);
 }
 form label {
   display: block;
@@ -179,7 +178,7 @@ form input[type=text], form input[type=email] {
   width: 100%;
   padding: 0.8rem;
   margin-top: 0.5rem;
-  border: 1px solid #E8D8B6;
+  border: 1px solid #F9F8F0;
   border-radius: 4px;
   background: #fff;
   box-sizing: border-box;
@@ -188,7 +187,7 @@ form input[type=text], form input[type=email] {
 form input[type=submit] {
   margin-top: 2.5rem;
   background: #C55C00;
-  color: #FDF5E6;
+  color: #FEF9F3;
   padding: 0.9rem 2.5rem;
   border: none;
   border-radius: 50px; /* Pill shape */
@@ -199,7 +198,7 @@ form input[type=submit] {
   transition: background 0.3s;
 }
 form input[type=submit]:hover {
-  background: #4A3A2F;
+  background: #F5F5DC;
   box-shadow: 0 2px 10px rgba(197, 92, 0, 0.8);
 }
 
@@ -215,9 +214,9 @@ form input[type=submit]:hover {
 .info .info-box {
   flex: 1 1 300px;
   max-width: 350px;
-  background: #FDF5E6;
+  background: #F5ECCD;
   border: 1px solid #C55C00;
-  box-shadow: 0 4px 15px rgba(74, 58, 47, 0.1);
+  box-shadow: 0 4px 15px rgba(245, 245, 220, 0.1);
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
@@ -225,11 +224,11 @@ form input[type=submit]:hover {
 }
 .info .info-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(74, 58, 47, 0.2);
-  border-color: #FFC300;
+  box-shadow: 0 10px 20px rgba(245, 245, 220, 0.2);
+  border-color: Black;
 }
 .info .info-box h3 {
-  color: #4A3A2F;
+  color: #979C84;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
@@ -246,19 +245,19 @@ form input[type=submit]:hover {
 
 /* --- Partner Area --- */
 .partner {
-  background: #4A3A2F;
+  background: #F5F5DC;
   text-align: center;
   margin: 4rem auto 0 auto;
-  color: #FFC300;
+  color: Black;
   padding: 3rem 1rem;
 }
 .partner h2 {
-  color: #FFC300;
-  border-color: #FFC300;
+  color: Black;
+  border-color: Black;
   margin-bottom: 2.5rem;
 }
 .partner p {
-  color: #FDF5E6;
+  color: #979C84;
   margin-bottom: 2rem;
   width: 80%;
 }
@@ -275,7 +274,7 @@ form input[type=submit]:hover {
   height: auto;
   background-color: #e8d8b6;
   padding: 1rem;
-  border: 3px solid #FFC300;
+  border: 3px solid Black;
   border-radius: 15px;
   transition: transform 0.4s, box-shadow 0.4s;
   margin: 0;
@@ -288,15 +287,15 @@ form input[type=submit]:hover {
 /* --- Footer --- */
 .footer {
   background: #2c2c2c;
-  color: #FDF5E6;
+  color: #979C84;
   text-align: center;
   padding: 1.5rem 0;
   margin: 0;
-  border-top: 3px solid #FFC300;
+  border-top: 3px solid Black;
 }
 .footer p {
   font-size: 0.9rem;
-  color: #E8D8B6;
+  color: #F9F8F0;
   margin: 0.5rem auto;
 }
 .footer a {
@@ -305,7 +304,7 @@ form input[type=submit]:hover {
   text-decoration: none;
 }
 .footer a:hover {
-  color: #FFC300;
+  color: Black;
 }
 
 /* --- Media Queries --- */
