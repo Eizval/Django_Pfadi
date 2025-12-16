@@ -1,6 +1,7 @@
 {% extends "pfadibase.html" %}
 {% load static %}
 {% block content %}
+<link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
 <div class="header">
 
 
@@ -112,7 +113,7 @@
             <input type="text" id="betreff" name="betreff" required>
 
             <label for="notiz">Notiz</label>
-            <textarea id="notiz" name="notiz" rows="15" cols="60" required></textarea>
+            <textarea id="notiz" name="notiz" required></textarea>
 
             <input type="submit" value="SUBMIT">
         </form>
