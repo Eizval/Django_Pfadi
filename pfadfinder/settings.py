@@ -30,11 +30,12 @@ ALLOWED_HOSTS = ['*']
 
 # Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('EMAIL_HOST_CYON', 'smtp.gmail.com')  # Later the one from CYON
-EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))  # 587 for TLS
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') # I'll need an environment variable for in running environment!
+EMAIL_HOST = os.environ.get('EMAIL_HOST_CYON', 'mail.cyon.ch')  # Later the one from CYON
+EMAIL_PORT = os.environ.get('EMAIL_PORT', 465)  # 587 for TLS
+EMAIL_USE_SSL = True   # Set this to True
+EMAIL_USE_TLS = False  # Set this to False
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER', 'sender@pfadibrig.ch')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS', '9XHKxDx08aOQB0') # I'll need an environment variable for in running environment!
 
 
 # Application definition

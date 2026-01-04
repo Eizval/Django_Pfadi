@@ -22,7 +22,7 @@ def contact_form_view(request):
             message = form.cleaned_data['notiz']  # Use form field name
 
             # 2. Construct the email details
-            recipient_email = 'info@pfadibrig.ch'
+            recipient_email = 'dev@pfadibrig.ch'
 
             # The email subject for the recipient
             email_subject = f"Neue Kontaktanfrage: {subject}"
