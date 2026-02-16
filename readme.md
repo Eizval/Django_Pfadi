@@ -150,3 +150,8 @@ To see the User Table
     python manage.py shell
     User.objects.all()
 ```
+
+## TODO
+Get pictures from Instagram
+Activities, get them from Notion API (Date + Level) add Button to import Semester Calender
+Download Notfallblatt (Empty) and Packliste, Sola Brief
